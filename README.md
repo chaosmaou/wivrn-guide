@@ -57,7 +57,6 @@ WiVRn has several limitations compared to other streaming solutions, especially 
 	
 ### Hardware Tested
 
-Distro: CachyOS \
 Headset: Meta Quest 2 \
 CPU: Ryzen 7 7800X3D \
 GPU: Sapphire Nitro+ 7800 XT 16GB \
@@ -68,6 +67,7 @@ Router: Asus AX-3000
 
 ### Software Tested
 
+Distro: CachyOS \
 Kernel: Linux 6.15.7-3-cachyos \
 DE: KDE Plasma 6.4.3 \
 Mesa: 25.1.6-cachyos1.3 \
