@@ -185,7 +185,7 @@ Select the settings page on the left side of the panel in front of you.
 
 + Resolution scale:
 	+ By default, WiVRn runs games at 140% resolution.
-		+ The extra 40% accounts for [barrel distrotion](https://developers.meta.com/horizon/documentation/native/pc/dg-render/). Note that this article applies to all modern headsets, not just Rift as the documents suggests.
+		+ The extra 40% accounts for [barrel distortion](https://developers.meta.com/horizon/documentation/native/pc/dg-render/). Note that this article applies to all modern headsets, not just Rift as the documents suggests.
 		+ If you have a weaker GPU, you can turn this slider down to improve performance, which will result in a loss of image clarity. Note that turning the slider down will decrease the resolution and clarity in the center of the display first -- the lower the resolution slider is, the bigger the circle with a lower resolution will become.
 
 + Enable microphone:
