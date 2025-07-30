@@ -229,7 +229,7 @@ Click on the download icon next to "Proton-GE Latest" and wait for it to downloa
 
 Then fully restart steam, and then open up Steam settings and set “Proton-GE Latest” under the compatibility tab as your main proton version.
 
-This will set Proton-GE as your desired version for all games, both VR and flatscreen, and is the recommended Proton version for Bazzite.
+This will set Proton-GE as your desired version for all games, both VR and flatscreen, and is the recommended Proton version for CachyOS.
 
 # Games that need tweaks
 
