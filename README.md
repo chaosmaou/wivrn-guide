@@ -263,11 +263,11 @@ To use the mod loader in linux, you must force the mod loaders compatibility too
 
 To use the launcher with VTOL VR, you have to add the following to the launch options of the game (Not the mod loader!)
 
->`PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" --doorstop-enabled true %command%`
+>`PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" %command% --doorstop-enabled true`
 
 Notes about additional launch options:
 
-* >`WINEDLLOVERRIDES="winhttp.dll=n,b" --doorstop-enable true`
+* >`WINEDLLOVERRIDES="winhttp.dll=n,b" %command% --doorstop-enable true`
    * This is required to get the game to actually launch with mods. Without it, clicking play in the mod loader will start the game with no mods enabled. To disable mods, change true to false.
 
 You should be able to open the mod loader and enable the mods you want, then ensure "Settings" > "VR Mode" > "OpenXR" is enabled in the menu bar of the mod loader.
