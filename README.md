@@ -91,7 +91,7 @@ If using Bazzite, you can simply install the WiVRn server from "Bazaar", the Fla
 
 If you are on CachyOS, you can use the following command to use paru to install it from [Arch User Repository](https://aur.archlinux.org/packages/wivrn-dashboard):
 
->paru -S wivrn-dashboard
+>`paru -S wivrn-dashboard`
 
 Regardless of your distro of choice, you should be able to easily find and launch WiVRn from your application launcher by searching for "wivrn".
 
@@ -225,11 +225,11 @@ Click on the download icon next to "Proton-GE Latest" and wait for it to downloa
 + [proton-cachyos](https://share.cachyos.org/proton/)
 	* The latest version of proton-cachyos in the repos doesn't support ntsync yet, but a seperate version is downloadable from the cachyos website. Download the archive and extract it's contents to the following folder:
 	
->~/.local/share/Steam/compatibilitytools.d/
+>`~/.local/share/Steam/compatibilitytools.d/`
 
 Then fully restart steam, and then open up Steam settings and set “Proton-GE Latest” under the compatibility tab as your main proton version.
 
-This will set Proton-GE as your desired version for all games, both VR and flatscreen, and is the recommended Proton version for CachyOS.
+This will set the manually downloaded version of proton as your desired version for all games, both VR and flatscreen, and is the recommended version for CachyOS.
 
 # Games that need tweaks
 
@@ -243,13 +243,13 @@ Also set the “Selected Launch Option” to match my screenshot above, forcing 
 
 You need to add the following environmental variables to the launch options to enable ntsync:
 
-`PROTON_USE_NTSYNC=1`
+>`PROTON_USE_NTSYNC=1`
 
 Put this at the end of the command, but before %command%
 
 It should look like this:
 
-`PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command%`
+>`PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command%`
 
 NOTE: VTOL VR by default in Linux will not update contacts on the NAV MFD correctly, and also has tons of multicrew sync issues, as well as many other strange bugs in multiplayer. You can resolve these issues by disabling Fsync and Esync in regular proton versions, but that also greatly degrades the performance of the game and drops your FPS by more than half. Enabling and using ntsync fixes all the issues without any FPS loss.
 
@@ -257,17 +257,17 @@ NOTE: VTOL VR by default in Linux will not update contacts on the NAV MFD correc
 
 Get the Mod Loader on Steam, it’s free here: [VTOL VR Mod Loader](https://store.steampowered.com/app/3018410/VTOL_VR_Mod_Loader/).
 
-To use the mod loader in linux, you must force the mod loaders compatibility tool to “Proton-GE Latest” in steam under its properties or it won’t launch correctly. This must be forced as the mod loader defaults to a version of Proton that doesn't work.
+To use the mod loader in linux, you must force the mod loaders compatibility tool to “Proton Experimental” in steam under its properties or it won’t launch correctly. This must be forced as the mod loader defaults to a version of Proton that doesn't work.
 
 ![VTOL VR Mod Loader Compatibility Tab in Steam](./assets/images/steam_vtolvr_modloader_compatibility.webp)
 
 To use the launcher with VTOL VR, you have to add the following to the launch options of the game (Not the mod loader!)
 
-`PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" --doorstop-enabled true %command%`
+>`PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" --doorstop-enabled true %command%`
 
 Notes about additional launch options:
 
-* `WINEDLLOVERRIDES="winhttp.dll=n,b" --doorstop-enable true`
+* >`WINEDLLOVERRIDES="winhttp.dll=n,b" --doorstop-enable true`
    * This is required to get the game to actually launch with mods. Without it, clicking play in the mod loader will start the game with no mods enabled. To disable mods, change true to false.
 
 You should be able to open the mod loader and enable the mods you want, then ensure "Settings" > "VR Mode" > "OpenXR" is enabled in the menu bar of the mod loader.
