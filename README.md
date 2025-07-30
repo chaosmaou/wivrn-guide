@@ -291,11 +291,13 @@ If you use a different audio device like a separate headset, just select those a
 
 ## Testing a game
 
-At this point, it is a good idea to just launch a VR gae and see how the it runs before playing with mods. You will have to manually run the game from Steam on you monitor the first time.
+At this point, it is a good idea to just launch a VR game and see how the it runs before playing with mods. You will have to manually run the game from Steam on you monitor the first time.
 
 If the game starts on your desktop but doesn’t connect to the headset, try fully re-booting WiVRn and Steam. Sometimes it also takes a full reboot of the headset and computer to make things work.
 
 You way tweak the WiVRn dashboard settings as discussed previously. Try increasing or lowering the bitrate as needed.
+
+If you still have quality or stream corruption issues, especially if having to drop the bitrate down to 50 MBit/s or lower, then suspect a broked driver install or network quality issues.
 
 ---
 # wlx-overlay-s:
