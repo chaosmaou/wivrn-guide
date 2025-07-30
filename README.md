@@ -208,7 +208,7 @@ Snapdragon Super Resolution has been replaced by the OpenXR processing options a
 The recommended proton version will vary depending on your distro.
 
 ## Bazzite
-	
+
 + [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom)
 	+ Install: Open up ProtonPlus from your application launcher (installed by default).
 
