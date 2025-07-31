@@ -182,7 +182,7 @@ Snapdragon Super Resolution has been replaced by the OpenXR processing options a
 ---
 # Valve Proton
 
-The recommended proton version will vary depending on your distro.
+The recommended proton version will vary depending on your distro of choice.
 
 ## Bazzite
 
@@ -212,7 +212,7 @@ This will set the manually downloaded version of proton as your desired version 
 
 ## VTOL VR
 
-VTOL VR requires ntsync to run correctly, and enabling it is very simple. First, copy the command from WiVRn dashboard and paste it into VTOL VR’s properties page inside Steam.
+
 
 ![VTOL VR Properties Tab in Steam](./assets/images/steam_vtolvr_general.webp)
 
@@ -381,30 +381,39 @@ Of course adjust USERNAME to match your own username in both above instances.
 
 The only SteamVR/OpenVR game I have fully tested is [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/). I find that the game runs far better in WiVRn with xrizer than it does in SteamVR in Windows ever did for me.
 
-### Hardware Tested
+# Hardware Tested
 
 Headset: Meta Quest 2 \
 CPU: Ryzen 7 7800X3D \
 GPU: Sapphire Nitro+ 7800 XT 16GB \
 MEM: G.SKILL 2x16GB DDR5 6000 MT/s \
 MOBO: GIGABYTE x670 Aorus Elite AX on F35 Bios \
+NVMe: Samsung 980 Pro 2TB \
 PSU: Corsair RM750 \
 Router: Asus AX-3000
 
-### Software Tested
+# Software Tested
 
-Distro: CachyOS \
+## [Bazzite:](https://bazzite.gg/)
+Kernel: Linux 6.15.6-105.bazzite.fc42 \
+DE: KDE Plasma 6.4.3 \
+Mesa: 25.1.6
+Proton: Proton-GE Latest
+
+## [CachyOS:](https://cachyos.org/)
+
 Kernel: Linux 6.15.7-3-cachyos \
 DE: KDE Plasma 6.4.3 \
 Mesa: 25.1.6-cachyos1.3 \
 Proton: proton-cachyos-10.0-20250714-ntsync-slr
 
-### Games Tested
+# Games Tested
 
 The follow games have been extensively tested on the previously listed hardware and software by me personally. I have included the exact launch paramters I use in Steam for brevity.
 
-#### [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/)
+## [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/)
 
+VTOL VR requires ntsync to run correctly, and enabling it is done the same as any regular flatscreen game -- by added the correct variable to the launch parameters of the game in Steam.
 + ***Without*** Mod Loader:
 
 >PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command%
@@ -414,20 +423,25 @@ The follow games have been extensively tested on the previously listed hardware 
 >PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" %command% --doorstop-enable true
 
 
-+ NOTE: When using the mod loader, you may disable mods and play the vanilla game without having to uninstall the mod loader by simple changing "true" to "false" for the doorstop argument at the end of the launch parameters.
++ **NOTE**:
+	+ The mod loader MUST use the same proton version that use for the main game. Make sure the proton version in Steam properties for both VTOL VR and the mod loader is identical.
+	+ When using the mod loader, you may disable mods and play the vanilla game without having to uninstall the mod loader by simple changing "true" to "false" for the doorstop argument at the end of the launch parameters.
 
-#### [Tactical Assault VR](https://store.steampowered.com/app/2314160/Tactical_Assault_VR/)
+## [Tactical Assault VR](https://store.steampowered.com/app/2314160/Tactical_Assault_VR/)
 
 >PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command%
 
-#### [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/)
+## [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/)
+
+Half-Life Alyx runs very well with OpenXR and WiVRn. I highly recommend forcing the fidelity level to it's highest setting to prevent pop-in of textures and greatly reduce traversal and rotation stutter during gameplay.
 
 >PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command% +vr_fidelity_level_auto 0 +vr_fidelity_level 3
 
 # Troubleshooting
 
 + If in doubt, clearly check the REQUIREMENTS/PREREQUISITES and COMPROMISES sections of this guide to make sure you haven't missed or misunderstood anything. Sometimes taking a break is a good idea and coming back later with a clear frame of mind, especially if you are feeling overwhelmed and/or frustrated.
-+ Lag and/or fast connecting/disconnects:
++ Lag and/or fast connecting/disconnects, Quality and/or bitrate low:
 	+ Try restarting your Quest headset. It sometimes happens and is an issue on the headset side. A reboot of your headset will usually fix these issues. If the issue persists, try completely rebooting your computer. If these issues persist, suspect your network has hardware or interference issues.
-+ Quality and/or bitrate low:
-	+ Most common issue is poor network performance. A good router is required, but so is a good connection between the router and your headset, as is between your computer and the router. Sometimes the air will be over-saturated with too much data traffic, or maybe even your LAN is being overwhelmed or having issues due to faulty hardware/software. Advanced setup of both wired and wireless networks is not covered by this guide, as that is a very complicated topic by itself. Another issue is poor GPU performance. Give the COMPROMISES section another quick read, and also take into consideration your hardware specs.
+	+ A common issue is that Quest/Meta headsets will drop to a lower link rate after sleep/resume. I often find my headset will be stuck at 300 MBit vs the normal 1200 MBit. Restarting the headset or toggling the WiFi  off and back on again in the headset fixes this issue until the next sleep/resume cycle.
++ Still having quality/rate issues?:
+	+ Most common issue is poor network performance. A good router is required, but so is a good connection between the router and your headset, as is between your computer and the router. Sometimes the air will be over-saturated with too much data traffic, or maybe even your LAN is being overwhelmed or having issues due to faulty hardware/software  -- sometimes it could be a faulty ethernet cable. Advanced setup of both wired and wireless networks is not covered by this guide, as that is a very complicated topic by itself. Another issue is poor GPU performance. Give the COMPROMISES section another quick read, and also take into consideration your hardware specs.
