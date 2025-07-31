@@ -55,29 +55,6 @@ WiVRn has several limitations compared to other streaming solutions, especially 
 - **Loss of in-game voice commands:**
 	+ [Voice commands](https://vtolvr.wiki.gg/wiki/Voice_Commands) require Windows Speech Recognition to be enabled to work, so this functionality doesn't work in Linux.
 	
-### Hardware Tested
-
-Headset: Meta Quest 2 \
-CPU: Ryzen 7 7800X3D \
-GPU: Sapphire Nitro+ 7800 XT 16GB \
-MEM: G.SKILL 2x16GB DDR5 6000 MT/s \
-MOBO: GIGABYTE x670 Aorus Elite AX on F35 Bios \
-PSU: Corsair RM750 \
-Router: Asus AX-3000
-
-### Software Tested
-
-Distro: CachyOS \
-Kernel: Linux 6.15.7-3-cachyos \
-DE: KDE Plasma 6.4.3 \
-Mesa: 25.1.6-cachyos1.3 \
-Proton: proton-cachyos-10.0-20250714-ntsync-slr
-
-### Games Tested
-
-[VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/) \
-[Tactical Assault VR](https://store.steampowered.com/app/2314160/Tactical_Assault_VR/)
-	
 ---
 # WiVRn Dashboard
 
@@ -365,7 +342,87 @@ Follow the pop up messages in the lower right of your monitor and select your di
 
 Once the window selections have completed on the PC, you should be able control your desktops now. wlx-overlay-s has a unique control scheme, and you can find out more about it starting on the[ GitHub page.](https://github.com/galister/wlx-overlay-s?tab=readme-ov-file#the-watch)
 
-I recommend fully reading the GitHub page when you have the time. You can customize your controller bindings, disable the quest pass-through, disable space move, and even set a custom texture background for your environment. All the info is already located at the wlx-overlay-s[ GitHub page.](https://github.com/galister/wlx-overlay-s) I won't cover these in the guide as the information is already listed there, and much of the setup is specific to each user's preferences.
+I recommend fully reading the GitHub page when you have the time. You can customize your controller bindings, disable the quest pass-through, disable space move, and even set a custom texture background for your environment. All the info is already located at the wlx-overlay-s [GitHub page.](https://github.com/galister/wlx-overlay-s) I won't cover these in the guide as the information is already listed there, and much of the setup is specific to each user's preferences.
+
+# xrizer
+
+Certain games on Steam, like [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/) are dependent upon Valve's own [SteamVR](https://store.steampowered.com/app/250820/SteamVR/). SteamVR actually uses OpenVR under the hood as it's default programming interface and runtime.
+
+SteamVR runs fairly poorly in Linux on newer Proton versions, and most of the time it won't even run at all.
+
+[xrizer](https://github.com/Supreeeme/xrizer) is a reimplementation of [OpenVR](https://github.com/ValveSoftware/openvr) on top of [OpenXR](https://www.khronos.org/OpenXR/). This enables WiVRn to run supported OpenVR games through any OpenXR runtime without running SteamVR.
+
+It's very simple to download and add as the default OpenVR compatability library in WiVRn, meaning games that normal frequire OpenVR/SteamVR can be ran directly without the use of SteamVR!
+
++ xrizer is a rewrite of [OpenComposite](https://gitlab.com/znixian/OpenComposite). xrizer is considered immature at this time, but currently enables support for games that OpenComposite struggles with, such as [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/).
+	* To learn more about why xrizer exists, visit [Why rewrite OpenComposite?](https://github.com/Supreeeme/xrizer?tab=readme-ov-file#why-rewrite-opencomposite) over at the xrizer GitHub page.
+
+## xrizer Install
+
+To get started, fetch the latest nightly release of xrizer from the [xrizer GitHub releases page](https://github.com/Supreeeme/xrizer/releases/).
+
+Once the zip file has been downloaded, extract the .zip folder and move the extracted "xrizer" folder to a location that has full permission access to your user account, such as:
+
+>~/.local/share/xrizer/
+
+Ensure you have the correct folder structure for xrizer. The shared object library file should be located like this if you pasted it correctly:
+
+>/home/USERNAME/.local/share/xrizer/bin/linux64/vrclient.so
+
+## xrizer Setup
+
+Setting xrizer to run with WiVRn is very simple. In the WiVRn dashboard settings, scroll down to the very bottom of the page and set the "OpenVR compatibility library" to "Custom", and enter the following into the entry field:
+
+>/home/USERNAME/.local/share/xrizer/
+
+Of course adjust USERNAME to match your own username in both above instances.
+
++ NOTE: To update xrizer in the future, just download the latest version and paste to the same location, overwriting any files.
+
+The only SteamVR/OpenVR game I have fully tested is [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/). I find that the game runs far better in WiVRn with xrizer than it does in SteamVR in Windows ever did for me.
+
+### Hardware Tested
+
+Headset: Meta Quest 2 \
+CPU: Ryzen 7 7800X3D \
+GPU: Sapphire Nitro+ 7800 XT 16GB \
+MEM: G.SKILL 2x16GB DDR5 6000 MT/s \
+MOBO: GIGABYTE x670 Aorus Elite AX on F35 Bios \
+PSU: Corsair RM750 \
+Router: Asus AX-3000
+
+### Software Tested
+
+Distro: CachyOS \
+Kernel: Linux 6.15.7-3-cachyos \
+DE: KDE Plasma 6.4.3 \
+Mesa: 25.1.6-cachyos1.3 \
+Proton: proton-cachyos-10.0-20250714-ntsync-slr
+
+### Games Tested
+
+The follow games have been extensively tested on the previously listed hardware and software by me personally. I have included the exact launch paramters I use in Steam for brevity.
+
+#### [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/)
+
++ ***Without*** Mod Loader:
+
+>PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command%
+
++ ***With*** Mod Loader:
+
+>PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" %command% --doorstop-enable true
+
+
++ NOTE: When using the mod loader, you may disable mods and play the vanilla game without having to uninstall the mod loader by simple changing "true" to "false" for the doorstop argument at the end of the launch parameters.
+
+#### [Tactical Assault VR](https://store.steampowered.com/app/2314160/Tactical_Assault_VR/)
+
+>PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command%
+
+#### [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/)
+
+>PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command% +vr_fidelity_level_auto 0 +vr_fidelity_level 3
 
 # Troubleshooting
 
