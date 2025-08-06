@@ -424,6 +424,7 @@ VTOL VR requires ntsync to run correctly, and enabling it is done the same as an
 
 
 + **NOTE**:
+	+ Update "PRESSURE_VESSEL_FILESYSTEMS_RW" with the correct value from WiVRn dashboard if you are using CachyOS (The above examples are for Bazzite).
 	+ The mod loader MUST use the same proton version that use for the main game. Make sure the proton version in Steam properties for both VTOL VR and the mod loader is identical.
 	+ When using the mod loader, you may disable mods and play the vanilla game without having to uninstall the mod loader by simple changing "true" to "false" for the doorstop argument at the end of the launch parameters.
 
