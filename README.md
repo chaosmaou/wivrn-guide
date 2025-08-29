@@ -1,13 +1,15 @@
 # WiVRn: A Comprehensive Wireless VR Guide
 
-**_Please carefully read everything, especially the [requirements](#requirements) and [compromises](#compromises) sections, it will save you a lot of headaches._**
+**_Please carefully read everything, especially the [requirements](#requirements) and [compromises](#compromises) sections, it will save you a lot of headaches and frustration._**
+
+**_Please also note this guide is based upon my own experiences, testing, and opinions and is by no means a comprehensive guide to everything VR or Linux!!!_**
 
 ---
 ## Summary
 
 The best way I have found to play with standalone VR headsets in Linux is by using [WiVRn](https://github.com/WiVRn/WiVRn). WiVRn is a solution similar to [ALVR](https://github.com/alvr-org/ALVR), [Air Link](https://www.meta.com/help/quest/509273027107091/), and [Virtual Desktop Standalone](https://www.meta.com/experiences/virtual-desktop/2017050365004772/), all providing a wireless solution to VR gaming. ALVR supports both Microsoft Windows and Linux, while both Air Link and Virtual Desktop Standalone both only support Microsoft Windows.
 
-WiVRn supports both wired (via USB) and fully wireless play, but this guide only coveres wireless VR.
+WiVRn supports both wired (via USB) and fully wireless play, but this guide only covers wireless VR, as I personally have not tried a Link Cable before.
 
 I fully consider standalone wireless VR as fully stable for regular everyday use, assuming all of the following requirements are met.
 
@@ -15,27 +17,28 @@ I fully consider standalone wireless VR as fully stable for regular everyday use
 ## Requirements
 
 - **Basic knowledge of Linux and terminal/command line.**
-	+ Not everything can be done with a GUI, and some terminal usage may be needed
+	+ Not everything can be done with a GUI, and some terminal usage will be needed
 	+ Basic knowledge of terminal and how to solve issues yourself will go a long way, especially if something goes wrong.
 	+ Ability to search for help and answers on your own via Google/Reddit.
+	+ Understanding the importance of finding and following relevant documentation.
 
 - **A  headset that is supported by WiVRn.**
 	+ WiVRn supports the following headsets for wireless play:
 		+ Quest 2, Quest 3, Quest 3S, Quest Pro, Pico Neo 4, HTC Vive Focus 3, and HTC Vive XR Elite
 
 - **A decent WiFi 5 or newer (AC, AX) network.**
-	+ WiVRn requires a decent wireless and wired network with little to no interference.
+	+ WiVRn requires a decent wireless and wired network with little to no interference. I have tested WiVRn on both AC and AX networks.
 		+ _There is a wired USB mode for WiVRn, but I have not tested it myself, so it is not covered by this guide._
 
 - **Wired Gigabit connection between computer and router.**
-	+ Latency and quality will both have issues if you try using any form of wireless/hotspot to connect your computer to your router. Other solutions like Air Link, ALVR, and Virtual Desktop also **REQUIRE** a wired GIGABIT connection from the computer to the router, and so does this guide. ***YOU MUST HAVE WIRED ETHERNET FROM YOUR COMPUTER TO YOUR ROUTER!!!***
+	+ Latency and quality will both have issues if you try using any form of wireless/hotspot to connect your computer to your router. Other solutions like Air Link, ALVR, and Virtual Desktop also **REQUIRE** a wired GIGABIT connection from the computer to the router, and so does this guide. ***YOU MUST HAVE WIRED ETHERNET FROM YOUR COMPUTER TO YOUR ROUTER!!!*** Use of wireless hotspots is NOT SUPPORTED under any circumstances.
 	
 - **Linux kernel version 6.15 or newer.**
 	+ [ntsync](https://docs.kernel.org/userspace-api/ntsync.html) requires newer kernels. Without it you may run into performance degradations, graphical glitches, or crashes, and some games will not work correctly at all (such as [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/))
 
-- **A proton branch that supports [ntsync](https://docs.kernel.org/userspace-api/ntsync.html), such as [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom) or [cachyos-proton-slr](https://share.cachyos.org/proton/).**
-	+ In addition to kernel support, the used [proton](https://github.com/ValveSoftware/Proton) version must also fully support ntsync.
+- **A proton branch that supports [ntsync](https://docs.kernel.org/userspace-api/ntsync.html), such as [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom) or [cachyos-proton](https://wiki.cachyos.org/configuration/gaming/#essential-packages).**
 
+- **Stable hardware, software, and network.** Many VR issues can be tracked down to being unrelated to the VR hardware or software. Ensure your system is up to snuff before attempting to run VR in Linux.
 
 - A fully functioning [Steam](https://store.steampowered.com/about/) installation.
 
@@ -49,32 +52,52 @@ WiVRn has several limitations compared to other streaming solutions, especially 
 - **Time investment:**
 	+ Expect some extra troubleshooting and setup, as per this guide. Knowledge is key, and although the switch from Windows to Linux seems daunting, it just takes learning and practice like with anything. This guide should help you on your journey, and make things far more painless for you.
 
-- **Quality loss compared to Virtual Desktop:**
-	+ Virtual Desktop Standalone for Quest 2/3/Pro headsets still has the edge on WiVRn when directly compared, and is a paid product. This is mainly because WiVRn does not yet support 10-bit encoding for H265 or AV1 yet, so you get more banding in your image. Hardware encoding in Linux on AMD GPUs has an encoding limit around 120 MBit/s. This doesn’t affect latency or overall usage -- WiVRn tends to look better than Meta Link or ALVR.
-	
-- **Loss of in-game voice commands:**
-	+ [Voice commands](https://vtolvr.wiki.gg/wiki/Voice_Commands) require Windows Speech Recognition to be enabled to work, so this functionality doesn't work in Linux.
-	
 ---
-# WiVRn Dashboard
 
-There are two ways to install WiVRn, and which you choose will depend on your distro of choice. I highly recommend [Bazzite](https://bazzite.gg/) as it will greatly simplify not only setting up your entire system install, but greatly simplifies the setup. Arch based distros also provide the AUR package [wivrn-dashboard](https://aur.archlinux.org/packages/wivrn-dashboard) which has worked for me in both CachyOS and EndeavourOS, as well as vanilla Arch in the past.
+# Tested Linux Distributions
 
-Bazzite is an immutable distro with much of the system locked down to prevent user editing of the system files and/or configs. The main OS is based on images, and all applications run in Flatpaks or Appimages.
+*NOTE: this section is based on my own recommendations, experiences, and testing. There are as many Linux distributions as stars in the night sky, so this is not a comprehensive list.*
 
-If using Bazzite, you can simply install the WiVRn server from "Bazaar", the Flatpak manager installed on your system by default. Open the program and use the search icon in the top left to search for "wivrn" and install the server Flatpak onto your system.
+I have personally tested VR in both [Bazzite](https://bazzite.gg/) and [CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/).
+
+* [Bazzite](https://bazzite.gg/) is an semi-immutable distro by [universal blue](https://universal-blue.org/) based on [Fedora Atomic](https://fedoraproject.org/atomic-desktops/). A highly simplified distro, it is mainly designed for ease of use and is very beginner friendly. Mainly uses [Flatpak](https://flatpak.org/) for applications which can easily be installed via the [Bazaar](https://github.com/kolunmi/bazaar) app store. The system is much more locked down that traditional distros, and it is mainly geared towards HTPC setups with controllers. Also has builds for handhelds like the SteamDeck.
+
+* [CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) is a traditional rolling release distribution based on [Arch Linux](https://archlinux.org/). CachyOS has gained a lot of momentum the past year, and recently reached #1 most popular distro on Distrowatch. Features the complexity and flexibility that Arch offers, but simplifies a lot of the setup and comes with tons of tweaks specific to newer hardware.
+
+## Choosing a Distribution
+
+My recommendation for a distro is very simplified, but should get you setup on the right track.
+
+* Have a hard time with learning new things or using Linux? Try Bazzite.
+* Experienced or wanting more control? Try CachyOS.
+
+I personally use CachyOS for it's flexbility and availability of most software due to the [Arch User Repository](https://aur.archlinux.org/). CachyOS is also a traditional distro that uses native packages.
+
+Bazzite is best serves as a HTPC hooked up to a large TV. Bazzite can autostart inside of Steam Home, giving the Steam PC experience on large screens.
+
+# WiVRn Dashboard Installation
+
+[WiVRn](https://github.com/WiVRn/WiVRn) wirelessly connects a standalone VR headset to a Linux computer. You can then play PCVR games on the headset while processing is done on the computer.
+
+The installation method for WiVRn will vary depending on your distro of choice.
+
+## Bazzite:
+
+Bazzite is an immutable distro with much of the system locked down to prevent user editing of the system files and/or configs. The main OS is based on images, and nearly all applications run in Flatpaks or Appimages.
+
+If using Bazzite, you can simply install the WiVRn server from "Bazaar", the Flatpak manager installed on your system by default. Open the program and use the search icon in the top left to search for "wivrn" and install the Flatpak onto your system.
 
 ![Bazaar Flatpak Manager](./assets/images/bazaar_wivrn.webp)
+
+## CachyOS:
 
 If you are on CachyOS, you can use the following command to use paru to install it from [Arch User Repository](https://aur.archlinux.org/packages/wivrn-dashboard):
 
 >`paru -S wivrn-dashboard`
 
-Regardless of your distro of choice, you should be able to easily find and launch WiVRn from your application launcher by searching for "wivrn".
+# WiVRn Dashboard Setup
 
-## WiVRn Dashboard Setup
-
-Go ahead and launch WiVRn if you have not already.
+Go ahead and launch WiVRn via your application launcher if you have not already.
 
 You will first be greeted by the setup wizard. For this guide, you can skip the wizard completely by clicking through it and accepting all defaults until you get to the main page:
 
@@ -84,29 +107,28 @@ Note the two sliders:
 + Running:
 	+ If this is toggled off, WiVRn will not run or accept connections from any headsets. You should always leave this toggled on.
 		+ _Note: The WiVRn dashboard **MUST** be open on your desktop or the server will not be running or accept new connections. Completely closing the WiVRn dashboard completely shuts it down entirely._
+		
++ Pairing:
+	+ Enabled by default, the pairing slider allows headsets to be paired to your computer.
 
-For Steam games, you need to copy the text included on this page using the “Copy” button and paste this into any VR games you want to play on Steam. Without these variables passed to the game in Steam, the game will not run in your headset correctly.
-
-To set this up, you set launch options for the game in Steam. You have to do this for each VR game you want to play on your headset. I will cover this in more detail later in the guide.
-
-Now let’s set up WiVRn optimally for streaming quality and performance. Go ahead and click the “Settings” button in the top right of the WiVRn dashboard.
+First, let’s set up WiVRn optimally for streaming quality and performance. Go ahead and click the “Settings” button in the top right of the WiVRn dashboard.
 
 ![WiVRn Dashboard Settings](./assets/images/wivrn_dashboard_settings.webp)
 
 Edit the following settings:
 
 + Manual foveation:
-	+ Set this to a minimum of 20%. Setting it lower than 20% may result in encoder overload in Linux. You can increase the slider to higher values to decrease encoder load, but the higher you go the more the outside of the image in your headset will be rendered at a lower resolution, reducing image quality the higher you go.
+	+ Set this to a minimum of 20%. Setting it lower than 20% may result in encoder overload in Linux. You can increase the slider to higher values to decrease encoder load, but the higher you go the more the outside of the image in your headset will be rendered at a lower resolution, reducing image quality the higher you go. 20% appears to be the sweet spot for Quest headsets.
 
 + Bitrate:
 	+ This setting will depend on your encoder, available GPU power, and your wireless network. A good starting point is the default 50 MBit/s, which any decent router and network setup can easily handle. I personally use 120 MBit/s, as that is a decent balance of latency and quality.
-		* _NOTE: Values higher than 120 MBit/s may result in encoder overload._
+		* _NOTE: Values higher than 120 MBit/s may result in encoder or network overload depending on your hardware setup._
 		* _NOTE: Close the app on your headset, fully shut down your VR game, and fully restart the dashboard to ensure the settings take full effect after making any changes._
 
 + Encoder Layout:
 	+ To set up the encoder layout, use the drop down box and select the “Low latency preset”. This will split the encoder into three threads, and you can then click in each box and force each of them to vaapi with H.265. Make sure not to click the center of the boxes or it will create another encoder split and you will have to start over.
 
-Refer to the following tables to determine what encoder and codec to use.
+Refer to the following tables to determine what encoder and codec to use. Take note that your hardware must also support the relevant codecs to be able to use them.
 
 - Quest 2 | Quest Pro | Pico Neo 4 | HTC Vive Focus 3 | HTC Vive XR Elite:
 
@@ -122,6 +144,8 @@ Refer to the following tables to determine what encoder and codec to use.
 | AMD    | vaapi   | AV1  |
 | NVIDIA | nvenc   | AV1  |
 
+If your GPU hardware doesn't support AV1, use H265 as fallback instead.
+
 You can try switching your codec to h.264 to get a reduction in latency, but note that you may see more banding in gradients if you do so. (This is true even on 8 bit displays!)
 
 ---
@@ -133,13 +157,15 @@ For others, you must download the APK and sideload it manually. The latest APK c
 
 ## WiVRn App Setup
 
-Once the app is installed, open it on your headset. You will be greeted by a simple UI. By default, passthrough will be enabled on headsets that support it.
+Once the app is installed, open it on your headset. You will be greeted by a simple UI. By default, camera passthrough will be enabled on headsets that support it.
 
 Go ahead and click on your computer using the green “Connect” button. Make sure that the dashboard is open and running on your computer, and that your headset is connected to the same network.
 
 You need to enter your pin PIN listed on the WiVRn dashboard the first time you connect to verify the connection.
 
-Sometimes the code will time out as pairing mode disables after a few minutes for security. Move the pairing slider in WiVRn over to the right by clicking on it to re-enable pairing and try again.
+Sometimes the code will time out as pairing mode disables after a few minutes for security. Move the pairing slider in WiVRn over to the right by clicking on it to re-enable pairing, or fully restart WiVRn on your computer and try again.
+
+Please also note that your firewall may block connections to your PC. Refer to the [WiVRn GitHub page](https://github.com/WiVRn/WiVRn?tab=readme-ov-file#my-headset-does-not-connect-to-my-computer) for instructions on what ports to allow.
 
 ![WiVRn Headset Server List](./assets/images/wivrn_headset_server_list.webp)
 
@@ -199,14 +225,31 @@ Click on the download icon next to "Proton-GE Latest" and wait for it to downloa
 
 ## CachyOS
 
-+ [proton-cachyos](https://share.cachyos.org/proton/)
-	* The latest version of proton-cachyos in the repos doesn't support ntsync yet, but a seperate version is downloadable from the cachyos website. Download the archive and extract it's contents to the following folder:
-	
->`~/.local/share/Steam/compatibilitytools.d/`
+There are two custom proton versions that come bundled with CachyOS.
 
-Then fully restart steam, and then open up Steam settings and set “Proton-GE Latest” under the compatibility tab as your main proton version.
+* **proton-cachyos** - based on Proton bleeding-edge, this is a custom Proton version that uses native libraries and has a ton of tweaks. This is best installed along with Steam and other dependencies using the [CachyOS Wiki](https://wiki.cachyos.org/configuration/gaming/#essential-packages) instructions.
 
-This will set the manually downloaded version of proton as your desired version for all games, both VR and flatscreen, and is the recommended version for CachyOS.
+* **proton-cachyos-slr** - a version of Proton that supports both **Easy Anti-Cheat (EAC)** and **BattlEye (BE)** Anti-cheats in games. If a game you play uses either of these, make sure to install the package "proton-cachyos-slr" and manually enable it for each game that needs it. Without this proton version you risk being kicked from servers or having connection issues.
+
+You can easily install both versions of Proton with the following command:
+
+>paru -S cachyos-gaming-meta proton-cachyos-slr
+
+# Enabling ntsync
+
+To enable ntsync, you must manually enable it for each game that you want to use it with. This must be done on a per-game basis in each individual games properties in Steam.
+
+![Steam Launch Parameters](./assets/images/steam_proton.webp)
+
+# Verify ntsync is functioning correctly
+
+To check if ntsync is working, simply launch a game once the launch paramter has been entered and use lsof from the terminal:
+
+>lsof /dev/ntsync
+
+This will print out any processes using ntsync at the time of running. It should list various steam processes, including your game EXE.
+
+Note that this only means ntsync is enabled with your game. Most games will work fine with ntsync and may receive various performance benefits that come with it, but for some games it may cause issues. Perform your own testing to determine if it is worth using, especially if the game isn't covered in 
 
 ---
 # WiVRn Connection
@@ -231,16 +274,16 @@ If the game starts on your desktop but doesn’t connect to the headset, try ful
 
 You way tweak the WiVRn dashboard settings as discussed previously. Try increasing or lowering the bitrate as needed.
 
-If you still have quality or stream corruption issues, especially if having to drop the bitrate down to 50 MBit/s or lower, then suspect a broked driver install or network quality issues.
+If you still have quality or stream corruption issues, especially if having to drop the bitrate down to 50 MBit/s or lower, then suspect a faulty hardware or software install, or network quality issues.
 
 ---
 # wlx-overlay-s:
 
-[wlx-overlay-s](https://github.com/galister/wlx-overlay-s) is a VR overlay for Linux that allows you to fully control your desktop from within VR, similar to how overlays such as xsoverlay or ovr toolkit work in SteamVR on Windows.
+[wlx-overlay-s](https://github.com/galister/wlx-overlay-s) is a VR overlay for Linux that allows you to fully control your desktop from within VR, similar to how overlays such as xsoverlay or OVR Toolkit work in SteamVR on Windows.
 
 You will be able to fully control your PC monitors, type on a virtual keyboard, listen to music, watch videos, and use your web browser in your headset.
 
-![wlx-overlay-s](./assets/images/wlx-s.png)
+![wlx-overlay-s](./assets/images/wlx-s.webp)
 
 ## wlx-overlay-s Install
 
@@ -250,7 +293,7 @@ Installing wlx-overlay-s will vary depending on your distro of choice.
 
 Go to the [GitHub](https://github.com/galister/wlx-overlay-s/releases) page and download the latest AppImage from the releases page.
 
-Then open Bazaar and search for "Gear Lever" and install it. We will use it to install and manage AppImages on your system
+Then open Bazaar and search for "Gear Lever" and install it. We will use it to install and manage AppImages on your system.
 
 Once downloaded, right click on the Appimage file on your computer and select “Open with Gear Lever”.
 
@@ -262,15 +305,17 @@ To allow Gear Lever to automatically update the Appimage, set the source to GitH
 
 >https://github.com/galister/wlx-overlay-s/releases/download/*/*-x86_64.AppImage
 
+You should now be notified by gear lever in the future if the appimage has any updates on GitHub, and it will easily allow you to one click update via the GUI.
+
 Then click “Save”. You can check for updates by refreshing metadata at the top of the page.
 
 In the top right of Gear Lever, you can go into settings to set up update notifications for any installed AppImages automatically.
 
-### CachyOS
+### CachyOS:
 
 Simply install the following AUR package:
 
-> paru -S wlx-overlay-s-git
+>paru -S wlx-overlay-s-git
 
 ## wlx-overlay-s Setup
 
@@ -314,7 +359,7 @@ It's very simple to download and add as the default OpenVR compatability library
 + xrizer is a rewrite of [OpenComposite](https://gitlab.com/znixian/OpenComposite). xrizer is considered immature at this time, but currently enables support for games that OpenComposite struggles with, such as [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/).
 	* To learn more about why xrizer exists, visit [Why rewrite OpenComposite?](https://github.com/Supreeeme/xrizer?tab=readme-ov-file#why-rewrite-opencomposite) over at the xrizer GitHub page.
 
-## xrizer Install
+## xrizer Install:
 
 To get started, fetch the latest nightly release of xrizer from the [xrizer GitHub releases page](https://github.com/Supreeeme/xrizer/releases/).
 
@@ -326,7 +371,7 @@ Ensure you have the correct folder structure for xrizer. The shared object libra
 
 >/home/USERNAME/.local/share/xrizer/bin/linux64/vrclient.so
 
-## xrizer Setup
+## xrizer Setup:
 
 Setting xrizer to run with WiVRn is very simple. In the WiVRn dashboard settings, scroll down to the very bottom of the page and set the "OpenVR compatibility library" to "Custom", and enter the following into the entry field:
 
@@ -354,19 +399,19 @@ Router: Asus AX-3000
 ## [Bazzite:](https://bazzite.gg/)
 Kernel: Linux 6.15.6-105.bazzite.fc42 \
 DE: KDE Plasma 6.4.3 \
-Mesa: 25.1.6
+Mesa: 25.1.6 \
 Proton: Proton-GE Latest
 
 ## [CachyOS:](https://cachyos.org/)
 
-Kernel: Linux 6.15.7-3-cachyos \
-DE: KDE Plasma 6.4.3 \
-Mesa: 25.1.6-cachyos1.3 \
-Proton: proton-cachyos-10.0-20250714-ntsync-slr
+Kernel: Linux 6.16.3-2-cachyos \
+DE: KDE Plasma 6.4.4 \
+Mesa: 25.2.1-cachyos1.3 \
+Proton: proton-cachyos and proton-cachyos-slr
 
 # Games Tested
 
-The follow games have been extensively tested on the previously listed hardware and software by me personally. I have included the exact launch paramters I use in Steam for brevity.
+The follow games have been extensively tested on the previously listed hardware and software by me personally. I have included the exact launch parameters I use in Steam for brevity.
 
 ## [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/)
 
@@ -400,6 +445,6 @@ Half-Life Alyx runs very well with OpenXR and WiVRn. I highly recommend forcing 
 + If in doubt, clearly check the REQUIREMENTS/PREREQUISITES and COMPROMISES sections of this guide to make sure you haven't missed or misunderstood anything. Sometimes taking a break is a good idea and coming back later with a clear frame of mind, especially if you are feeling overwhelmed and/or frustrated.
 + Lag and/or fast connecting/disconnects, Quality and/or bitrate low:
 	+ Try restarting your Quest headset. It sometimes happens and is an issue on the headset side. A reboot of your headset will usually fix these issues. If the issue persists, try completely rebooting your computer. If these issues persist, suspect your network has hardware or interference issues.
-	+ A common issue is that Quest/Meta headsets will drop to a lower link rate after sleep/resume. I often find my headset will be stuck at 300 MBit vs the normal 1200 MBit. Restarting the headset or toggling the WiFi  off and back on again in the headset fixes this issue until the next sleep/resume cycle.
+	+ A common issue is that Quest/Meta headsets will drop to a lower WiFi link rate after sleep/resume and get stuck at that rate. I often find my headset will be stuck at 300 MBit or less vs the normal 1200 MBit. Restarting the headset or toggling the WiFi  off and back on again in the headset fixes this issue until the next sleep/resume cycle. You can check for this bug in the WiFi menu on your headset by selecting your network details and scrolling down.
 + Still having quality/rate issues?:
 	+ Most common issue is poor network performance. A good router is required, but so is a good connection between the router and your headset, as is between your computer and the router. Sometimes the air will be over-saturated with too much data traffic, or maybe even your LAN is being overwhelmed or having issues due to faulty hardware/software  -- sometimes it could be a faulty ethernet cable. Advanced setup of both wired and wireless networks is not covered by this guide, as that is a very complicated topic by itself. Another issue is poor GPU performance. Give the COMPROMISES section another quick read, and also take into consideration your hardware specs.
