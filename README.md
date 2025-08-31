@@ -383,7 +383,7 @@ Of course adjust USERNAME to match your own username in both above instances.
 
 The only SteamVR/OpenVR game I have fully tested is [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/). I find that the game runs far better in WiVRn with xrizer than it does in SteamVR in Windows ever did for me.
 
-# Hardware Tested
+## Hardware Tested
 
 Headset: Meta Quest 2 \
 CPU: Ryzen 7 7800X3D \
@@ -394,7 +394,7 @@ NVMe: Samsung 980 Pro 2TB \
 PSU: Corsair RM750 \
 Router: Asus AX-3000
 
-# Software Tested
+## Software Tested
 
 ## [Bazzite:](https://bazzite.gg/)
 Kernel: Linux 6.15.6-105.bazzite.fc42 \
@@ -409,11 +409,11 @@ DE: KDE Plasma 6.4.4 \
 Mesa: 25.2.1-cachyos1.3 \
 Proton: proton-cachyos and proton-cachyos-slr
 
-# Games Tested
+## Games Tested
 
 The follow games have been extensively tested on the previously listed hardware and software by me personally. I have included the exact launch parameters I use in Steam for brevity.
 
-## [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/)
+### [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/)
 
 VTOL VR requires ntsync to run correctly, and enabling it is done the same as any regular flatscreen game -- by added the correct variable to the launch parameters of the game in Steam.
 + ***Without*** Mod Loader:
@@ -430,17 +430,17 @@ VTOL VR requires ntsync to run correctly, and enabling it is done the same as an
 	+ The mod loader MUST use the same proton version that use for the main game. Make sure the proton version in Steam properties for both VTOL VR and the mod loader is identical.
 	+ When using the mod loader, you may disable mods and play the vanilla game without having to uninstall the mod loader by simple changing "true" to "false" for the doorstop argument at the end of the launch parameters.
 
-## [Tactical Assault VR](https://store.steampowered.com/app/2314160/Tactical_Assault_VR/)
+### [Tactical Assault VR](https://store.steampowered.com/app/2314160/Tactical_Assault_VR/)
 
 >PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command%
 
-## [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/)
+### [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/)
 
 Half-Life Alyx runs very well with OpenXR and WiVRn. I highly recommend forcing the fidelity level to it's highest setting to prevent pop-in of textures and greatly reduce traversal and rotation stutter during gameplay.
 
 >PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command% +vr_fidelity_level_auto 0 +vr_fidelity_level 3
 
-# Troubleshooting
+## Troubleshooting
 
 + If in doubt, clearly check the REQUIREMENTS/PREREQUISITES and COMPROMISES sections of this guide to make sure you haven't missed or misunderstood anything. Sometimes taking a break is a good idea and coming back later with a clear frame of mind, especially if you are feeling overwhelmed and/or frustrated.
 + Lag and/or fast connecting/disconnects, Quality and/or bitrate low:
