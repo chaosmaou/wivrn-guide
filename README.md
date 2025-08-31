@@ -146,6 +146,8 @@ Edit the following settings:
 
 Refer to the following tables to determine what encoder and codec to use. Take note that your hardware must also support the relevant codecs to be able to use them.
 
+NOTE: The AV1 encoder requires more modern GPUs. On AMD, it is supported on 7000 series or newer, and on Nvidia 3000 series or newer is required.
+
 - Quest 2 | Quest Pro | Pico Neo 4 | HTC Vive Focus 3 | HTC Vive XR Elite:
 
 | GPU    | Encoder | Codec |
