@@ -53,49 +53,65 @@ WiVRn has several limitations compared to other streaming solutions, especially 
 	+ Expect some extra troubleshooting and setup, as per this guide. Knowledge is key, and although the switch from Windows to Linux seems daunting, it just takes learning and practice like with anything. This guide should help you on your journey, and make things far more painless for you.
 
 ---
-
-# Tested Linux Distributions
+## Tested Linux Distributions
 
 *NOTE: this section is based on my own recommendations, experiences, and testing. There are as many Linux distributions as stars in the night sky, so this is not a comprehensive list.*
 
-I have personally tested VR in both [Bazzite](https://bazzite.gg/) and [CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/).
+I have personally tested VR in both [Bazzite](https://bazzite.gg/), [CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) and [PikaOS](https://wiki.pika-os.com/en/home).
 
-* [Bazzite](https://bazzite.gg/) is an semi-immutable distro by [universal blue](https://universal-blue.org/) based on [Fedora Atomic](https://fedoraproject.org/atomic-desktops/). A highly simplified distro, it is mainly designed for ease of use and is very beginner friendly. Mainly uses [Flatpak](https://flatpak.org/) for applications which can easily be installed via the [Bazaar](https://github.com/kolunmi/bazaar) app store. The system is much more locked down that traditional distros, and it is mainly geared towards HTPC setups with controllers. Also has builds for handhelds like the SteamDeck.
+### Bazzite
 
-* [CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) is a traditional rolling release distribution based on [Arch Linux](https://archlinux.org/). CachyOS has gained a lot of momentum the past year, and recently reached #1 most popular distro on Distrowatch. Features the complexity and flexibility that Arch offers, but simplifies a lot of the setup and comes with tons of tweaks specific to newer hardware.
+[Bazzite](https://bazzite.gg/) is an semi-immutable distro by [universal blue](https://universal-blue.org/) based on [Fedora Atomic](https://fedoraproject.org/atomic-desktops/). A highly simplified distro, it is mainly designed for ease of use and is very beginner friendly. Mainly uses [Flatpak](https://flatpak.org/) for applications which can easily be installed via the [Bazaar](https://github.com/kolunmi/bazaar) app store. The system is much more locked down that traditional distros, and it is mainly geared towards HTPC setups with controllers. Also has builds for handhelds like the SteamDeck.
 
+### CachyOS
+
+[CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) is a traditional rolling release distribution based on [Arch Linux](https://archlinux.org/). CachyOS has gained a lot of momentum the past year, and recently reached #1 most popular distro on Distrowatch. Features the complexity and flexibility that Arch offers, but simplifies a lot of the setup and comes with tons of tweaks specific to newer hardware, as well as a great GUI installer. Features x86_64-v3 optimised packages for newer CPUs as optional choice during installation.
+
+### PikaOS
+
+[PikaOS](https://wiki.pika-os.com/en/home) is a fairly new rolling release distro based on [Debian](https://www.debian.org/intro/why_debian). Unlike Bazzite, PikaOS is a traditional distro that doesn't lock down the system. Features tons of gaming related tweaks like CachyOS, but requires more modern CPUs that support x86_64-v3. A stable base with updated applications thanks to custom packages and Flatpaks, PikaOS uses [Discover](https://apps.kde.org/discover/) as it's app store. Similar to Bazaar that Bazzite uses, Discover is much more mature and features full category sorting.
+
+---
 ## Choosing a Distribution
 
 My recommendation for a distro is very simplified, but should get you setup on the right track.
 
-* Have a hard time with learning new things or using Linux? Try Bazzite.
-* Experienced or wanting more control? Try CachyOS.
+### CachyOS
 
-I personally use CachyOS for it's flexbility and availability of most software due to the [Arch User Repository](https://aur.archlinux.org/). CachyOS is also a traditional distro that uses native packages.
+CachyOS is hailed for it's flexibility, speed, and availability of most software due to the [Arch User Repository](https://aur.archlinux.org/). CachyOS is also a traditional distro that uses native packages. I wouldn't recommend CachyOS to novice computer users. Expect things to work out of the box, but if you want to tweak it you need to learn to ready CachyOS and ArchWiki documentation in detail or you will run into issues.
 
-Bazzite is best serves as a HTPC hooked up to a large TV. Bazzite can autostart inside of Steam Home, giving the Steam PC experience on large screens.
+The AUR also can be very dangerous if you do not fully check and understand PKGBUILDs -- recently malware was discovered on the AUR that many users installed.
 
-# WiVRn Dashboard Installation
+### Bazzite
+
+Bazzite is best served as a HTPC hooked up to a large TV. Bazzite can auto-start inside of Steam Home, giving the Steam PC experience on large screens. It's desktop experience is very good though, and fully useable on desktops as an everyday operating systems.
+
+### PikaOS
+
+PikaOS is still a very new distro without a proven track record, but is still ready for daily use. Very beginner friendly like Bazzite, but features similar performance and tweaks like CachyOS, this is a very good distro. This is a good choice if you are familiar with Debian and prefer having a very stable base. Note that because it is based on Debian, certain packages related to your desktop environment will be slighty more out of date compared to the other distros.
+
+---
+## WiVRn
 
 [WiVRn](https://github.com/WiVRn/WiVRn) wirelessly connects a standalone VR headset to a Linux computer. You can then play PCVR games on the headset while processing is done on the computer.
 
+### WiVRn Installation
+
 The installation method for WiVRn will vary depending on your distro of choice.
 
-## Bazzite:
+#### Bazzite/PikaOS
 
-Bazzite is an immutable distro with much of the system locked down to prevent user editing of the system files and/or configs. The main OS is based on images, and nearly all applications run in Flatpaks or Appimages.
-
-If using Bazzite, you can simply install the WiVRn server from "Bazaar", the Flatpak manager installed on your system by default. Open the program and use the search icon in the top left to search for "wivrn" and install the Flatpak onto your system.
+Search for "WiVRn" in your package manager of choice (Bazaar on Bazzite and Discover and PikaOS) and install the Flatpak for it.
 
 ![Bazaar Flatpak Manager](./assets/images/bazaar_wivrn.webp)
 
-## CachyOS:
+#### CachyOS
 
 If you are on CachyOS, you can use the following command to use paru to install it from [Arch User Repository](https://aur.archlinux.org/packages/wivrn-dashboard):
 
 >`paru -S wivrn-dashboard`
 
-# WiVRn Dashboard Setup
+## WiVRn Setup
 
 Go ahead and launch WiVRn via your application launcher if you have not already.
 
@@ -148,14 +164,13 @@ If your GPU hardware doesn't support AV1, use H265 as fallback instead.
 
 You can try switching your codec to h.264 to get a reduction in latency, but note that you may see more banding in gradients if you do so. (This is true even on 8 bit displays!)
 
----
-# WiVRn App
+## WiVRn App
 
 For Meta Quest headsets, simply install the WiVRn app from the Meta Quest store on your headset.
 
 For others, you must download the APK and sideload it manually. The latest APK can be found on the [GitHub](https://github.com/WiVRn/WiVRn/releases) releases page for WiVRn.
 
-## WiVRn App Setup
+### WiVRn App Setup
 
 Once the app is installed, open it on your headset. You will be greeted by a simple UI. By default, camera passthrough will be enabled on headsets that support it.
 
@@ -177,7 +192,7 @@ At this point, WiVRn is connected to your computer and is waiting for a game to 
 
 Now click the blue “disconnect” button as we need to change some settings in the app directly for the best experience.
 
-## WiVRn App Settings Tab
+### WiVRn App Settings Tab
 
 Select the settings page on the left side of the panel in front of you.
 
@@ -197,7 +212,7 @@ Select the settings page on the left side of the panel in front of you.
 + Show performance metrics:
 	+ Enable performance metrics which will show an overlay when you connect to games to troubleshoot performance (this overlay will show up by default and can be hidden by pushing both thumb sticks down at the same time). The overlay is a great troubleshooting tool.
 	
-## WiVRn App Post Processing Tab
+### WiVRn App Post Processing Tab
 
 ![WiVRn Headset Post Processing Tab](./assets/images/wivrn_headset_post_processing.webp)
 
@@ -206,11 +221,11 @@ Enable quality sharpening when running the default 140% resolution. If you turn 
 Snapdragon Super Resolution has been replaced by the OpenXR processing options at the top, which you can see the warnings about by hovering over the yellow warning icon in the app.
 
 ---
-# Valve Proton
+## Valve Proton
 
 The recommended proton version will vary depending on your distro of choice.
 
-## Bazzite
+### Bazzite/PikaOS
 
 + [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom)
 	+ Install: Open up ProtonPlus from your application launcher (installed by default).
@@ -223,7 +238,7 @@ Click on “Proton-GE” listed at the top of the page in ProtonPlus.
 
 Click on the download icon next to "Proton-GE Latest" and wait for it to download.
 
-## CachyOS
+### CachyOS
 
 There are two custom proton versions that come bundled with CachyOS.
 
@@ -235,13 +250,14 @@ You can easily install both versions of Proton with the following command:
 
 >paru -S cachyos-gaming-meta proton-cachyos-slr
 
-# Enabling ntsync
+---
+## Enabling ntsync
 
 To enable ntsync, you must manually enable it for each game that you want to use it with. This must be done on a per-game basis in each individual games properties in Steam.
 
 ![Steam Launch Parameters](./assets/images/steam_proton.webp)
 
-# Verify ntsync is functioning correctly
+### Verify ntsync is functioning correctly
 
 To check if ntsync is working, simply launch a game once the launch paramter has been entered and use lsof from the terminal:
 
@@ -252,11 +268,11 @@ This will print out any processes using ntsync at the time of running. It should
 Note that this only means ntsync is enabled with your game. Most games will work fine with ntsync and may receive various performance benefits that come with it, but for some games it may cause issues. Perform your own testing to determine if it is worth using, especially if the game isn't covered in 
 
 ---
-# WiVRn Connection
+## WiVRn Connection
 
 Now, go ahead and reconnect WiVRn to your computer. It should say connected and is now waiting for you to start a game.
 
-## Select Audio Devices
+### Select Audio Devices
 
 By default, WiVRn will configure the streaming audio devices on your computer, but both the output and input audio streams for WiVRn should be selected by you on your desktop.
 
@@ -266,9 +282,10 @@ These should auto connect in the future when you connect, and only need to be se
 
 If you use a different audio device like a separate headset, just select those audio devices instead.
 
-## Testing a game
+---
+## Testing
 
-At this point, it is a good idea to just launch a VR game and see how the it runs before playing with mods. You will have to manually run the game from Steam on you monitor the first time.
+At this point, it is a good idea to just launch a VR game and see how the it runs before playing continuing furter. You will have to manually run the game from Steam on your monitor the first time.
 
 If the game starts on your desktop but doesn’t connect to the headset, try fully re-booting WiVRn and Steam. Sometimes it also takes a full reboot of the headset and computer to make things work.
 
@@ -276,8 +293,10 @@ You way tweak the WiVRn dashboard settings as discussed previously. Try increasi
 
 If you still have quality or stream corruption issues, especially if having to drop the bitrate down to 50 MBit/s or lower, then suspect a faulty hardware or software install, or network quality issues.
 
+Try multiple games to determine that your issue is network related and not game related. Some games might not work well with ntsync, so try removing the launch paramaters if you have stuttering or performance issues.
+
 ---
-# wlx-overlay-s:
+## wlx-overlay-s:
 
 [wlx-overlay-s](https://github.com/galister/wlx-overlay-s) is a VR overlay for Linux that allows you to fully control your desktop from within VR, similar to how overlays such as xsoverlay or OVR Toolkit work in SteamVR on Windows.
 
@@ -285,15 +304,15 @@ You will be able to fully control your PC monitors, type on a virtual keyboard, 
 
 ![wlx-overlay-s](./assets/images/wlx-s.webp)
 
-## wlx-overlay-s Install
+### wlx-overlay-s Install
 
 Installing wlx-overlay-s will vary depending on your distro of choice.
 
-### Bazzite:
+#### Bazzite/PikaOS
 
 Go to the [GitHub](https://github.com/galister/wlx-overlay-s/releases) page and download the latest AppImage from the releases page.
 
-Then open Bazaar and search for "Gear Lever" and install it. We will use it to install and manage AppImages on your system.
+Then open your app store and search for "Gear Lever" and install it. We will use it to install and manage AppImages on your system.
 
 Once downloaded, right click on the Appimage file on your computer and select “Open with Gear Lever”.
 
@@ -311,13 +330,13 @@ Then click “Save”. You can check for updates by refreshing metadata at the t
 
 In the top right of Gear Lever, you can go into settings to set up update notifications for any installed AppImages automatically.
 
-### CachyOS:
+#### CachyOS
 
 Simply install the following AUR package:
 
 >paru -S wlx-overlay-s-git
 
-## wlx-overlay-s Setup
+### wlx-overlay-s Setup
 
 You can automatically set wlx-overlay-s to run automatically once your headset connects to WiVRn.
 
@@ -327,13 +346,16 @@ Go to the main WiVRn dashboard page again.
 
 Notice the "Application" field on this page -- this is the default program that WiVRn will run once you connect to your computer.
 
-Set application to custom and enter the following depending on your distro of choice:
+Set application to custom and enter the following into WiVRn depending on your distro of choice:
 
-+ For Bazzite (_NOTE: Change **USERNAME** to match your user account name!_):
+#### Bazzite/PikaOS
+
+Change **USERNAME** to match your user account name:
 >/var/home/USERNAME/AppImages/wlxoverlays.appimage
 
+#### CachyOS
 
-+ For CachyOS:
+Just launch the native executable:
 >wlx-overlay-s
 
 Note that the first time you connect, a window will pop up on your desktop.
@@ -346,7 +368,8 @@ Once the window selections have completed on the PC, you should be able control 
 
 I recommend fully reading the GitHub page when you have the time. You can customize your controller bindings, disable the quest pass-through, disable space move, and even set a custom texture background for your environment. All the info is already located at the wlx-overlay-s [GitHub page.](https://github.com/galister/wlx-overlay-s) I won't cover these in the guide as the information is already listed there, and much of the setup is specific to each user's preferences.
 
-# xrizer
+---
+## xrizer
 
 Certain games on Steam, like [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/) are dependent upon Valve's own [SteamVR](https://store.steampowered.com/app/250820/SteamVR/). SteamVR actually uses OpenVR under the hood as it's default programming interface and runtime.
 
@@ -359,7 +382,7 @@ It's very simple to download and add as the default OpenVR compatability library
 + xrizer is a rewrite of [OpenComposite](https://gitlab.com/znixian/OpenComposite). xrizer is considered immature at this time, but currently enables support for games that OpenComposite struggles with, such as [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/).
 	* To learn more about why xrizer exists, visit [Why rewrite OpenComposite?](https://github.com/Supreeeme/xrizer?tab=readme-ov-file#why-rewrite-opencomposite) over at the xrizer GitHub page.
 
-## xrizer Install:
+### xrizer Install:
 
 To get started, fetch the latest nightly release of xrizer from the [xrizer GitHub releases page](https://github.com/Supreeeme/xrizer/releases/).
 
@@ -371,7 +394,7 @@ Ensure you have the correct folder structure for xrizer. The shared object libra
 
 >/home/USERNAME/.local/share/xrizer/bin/linux64/vrclient.so
 
-## xrizer Setup:
+### xrizer Setup:
 
 Setting xrizer to run with WiVRn is very simple. In the WiVRn dashboard settings, scroll down to the very bottom of the page and set the "OpenVR compatibility library" to "Custom", and enter the following into the entry field:
 
@@ -383,8 +406,8 @@ Of course adjust USERNAME to match your own username in both above instances.
 
 The only SteamVR/OpenVR game I have fully tested is [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/). I find that the game runs far better in WiVRn with xrizer than it does in SteamVR in Windows ever did for me.
 
+---
 ## Hardware Tested
-
 Headset: Meta Quest 2 \
 CPU: Ryzen 7 7800X3D \
 GPU: Sapphire Nitro+ 7800 XT 16GB \
@@ -395,22 +418,26 @@ PSU: Corsair RM750 \
 Router: Asus AX-3000
 
 ## Software Tested
-
-## [Bazzite:](https://bazzite.gg/)
+### [Bazzite:](https://bazzite.gg/)
 Kernel: Linux 6.15.6-105.bazzite.fc42 \
 DE: KDE Plasma 6.4.3 \
 Mesa: 25.1.6 \
 Proton: Proton-GE Latest
 
-## [CachyOS:](https://cachyos.org/)
-
+### [CachyOS:](https://cachyos.org/)
 Kernel: Linux 6.16.3-2-cachyos \
 DE: KDE Plasma 6.4.4 \
 Mesa: 25.2.1-cachyos1.3 \
 Proton: proton-cachyos and proton-cachyos-slr
 
-## Games Tested
+### [PikaOS](https://wiki.pika-os.com/en/home)
+Kernel: Kernel Version: 6.16.3-pikaos \
+DE: KDE Plasma 6.3.6 \
+Mesa: 25.1.7 \
+Proton: Proton-GE Latest
 
+---
+## Games Tested
 The follow games have been extensively tested on the previously listed hardware and software by me personally. I have included the exact launch parameters I use in Steam for brevity.
 
 ### [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/)
@@ -418,28 +445,23 @@ The follow games have been extensively tested on the previously listed hardware 
 VTOL VR requires ntsync to run correctly, and enabling it is done the same as any regular flatscreen game -- by added the correct variable to the launch parameters of the game in Steam.
 + ***Without*** Mod Loader:
 
->PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command%
+>PROTON_USE_NTSYNC=1 %command%
 
 + ***With*** Mod Loader:
 
->PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" %command% --doorstop-enable true
-
-
-+ **NOTE**:
-	+ Update "PRESSURE_VESSEL_FILESYSTEMS_RW" with the correct value from WiVRn dashboard if you are using CachyOS (The above examples are for Bazzite).
-	+ The mod loader MUST use the same proton version that use for the main game. Make sure the proton version in Steam properties for both VTOL VR and the mod loader is identical.
-	+ When using the mod loader, you may disable mods and play the vanilla game without having to uninstall the mod loader by simple changing "true" to "false" for the doorstop argument at the end of the launch parameters.
+>PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" %command% --doorstop-enable true
 
 ### [Tactical Assault VR](https://store.steampowered.com/app/2314160/Tactical_Assault_VR/)
 
->PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command%
+>PROTON_USE_NTSYNC=1 %command%
 
 ### [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/)
 
-Half-Life Alyx runs very well with OpenXR and WiVRn. I highly recommend forcing the fidelity level to it's highest setting to prevent pop-in of textures and greatly reduce traversal and rotation stutter during gameplay.
+Half-Life Alyx runs very well with OpenXR and WiVRn. The frametimes tend to be a lot better than in Windows with SteamVR. I highly recommend forcing the fidelity level to it's highest setting to prevent pop-in of textures and greatly reduce traversal and rotation stutter during gameplay.
 
->PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc:/var/lib/flatpak/app/io.github.wivrn.wivrn PROTON_USE_NTSYNC=1 %command% +vr_fidelity_level_auto 0 +vr_fidelity_level 3
+>PROTON_USE_NTSYNC=1 %command% +vr_fidelity_level_auto 0 +vr_fidelity_level 3
 
+---
 ## Troubleshooting
 
 + If in doubt, clearly check the REQUIREMENTS/PREREQUISITES and COMPROMISES sections of this guide to make sure you haven't missed or misunderstood anything. Sometimes taking a break is a good idea and coming back later with a clear frame of mind, especially if you are feeling overwhelmed and/or frustrated.
