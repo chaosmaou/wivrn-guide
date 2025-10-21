@@ -461,10 +461,10 @@ Router: Asus RT AX-3000 (can be bought on [Amazon](https://www.amazon.com/ASUS-R
 
 ### [Bazzite:](https://bazzite.gg/)
 
-Kernel: 6.16.4-104.bazzite.fc42.x86_64 (64-bit) \
-DE: KDE Plasma 6.4.4 \
-Mesa: 25.2.1 \
-Proton: Proton-GE10-15 and Proton-GE Latest
+Kernel: 6.16.4-116.bazzite.fc42.x86_64 (64-bit) \
+DE: KDE Plasma 6.4.5 \
+Mesa: 25.2.4 \
+Proton: Proton-GE10-21 andProton-GE Latest
 
 ### [CachyOS:](https://cachyos.org/)
 
