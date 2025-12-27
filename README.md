@@ -19,48 +19,48 @@ I fully consider standalone wireless VR as fully stable for regular everyday use
 ## Requirements
 
 - **Basic knowledge of Linux and terminal/command line.**
-  
+
   - Not everything can be done with a GUI, and some terminal usage will be needed
   - Basic knowledge of terminal and how to solve issues yourself will go a long way, especially if something goes wrong.
   - Ability to search for help and answers on your own via Google/Reddit.
   - Understanding the importance of finding and following relevant documentation.
 - **A headset that is supported by WiVRn.**
-  
+
   - WiVRn supports the following headsets for wireless play:
     - Quest 2, Quest 3, Quest 3S, Quest Pro, Pico Neo 4, HTC Vive Focus 3, and HTC Vive XR Elite
 - **A decent WiFi 5 or newer (AC, AX) network.**
-  
+
   - WiVRn requires a decent wireless and wired network with little to no interference. I have tested WiVRn on both AC and AX networks. I highly recommend a dedicated router in AP (access point) mode directly connected to your computer via wired ethernet to greatly improve the experience.
     - _There is a wired USB mode for WiVRn, but I have not tested it myself, so it is not covered by this guide._
 - **Wired Gigabit connection between computer and router.**
-  
+
   - Latency and quality will both have issues if you try using any form of wireless/hotspot to connect your computer to your router. Other solutions like Air Link, ALVR, and Virtual Desktop also **REQUIRE** a wired GIGABIT connection from the computer to the router, and so does this guide. ***YOU MUST HAVE WIRED ETHERNET FROM YOUR COMPUTER TO YOUR ROUTER!!!*** Use of wireless hotspots is NOT SUPPORTED under any circumstances.
 - **A stable network.**
-  
+
   - A correctly configured ethernet and WiFI network, as well as no wireless interference is essential for a good wireless VR experience. See the [Advanced Network Testing](#Advanced Network Testing) subsection in the Troubleshooting section for information on how to fully test your local network.
-    
+
     - NOTE: Your internet speed DOES NOT matter for wireless VR -- but your LAN speed does! This includes both your wired and wireless network, as well as your networking card and cables. All of these things need to be working correctly.
-      
+
 
 - **Linux kernel version 6.15 or newer.**
-  
+
   - [ntsync](https://docs.kernel.org/userspace-api/ntsync.html) requires newer kernels. Without it you may run into performance degradation, graphical glitches, or crashes, and some games will not work correctly at all (such as [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/))
 - **A proton branch that supports [ntsync](https://docs.kernel.org/userspace-api/ntsync.html), such as [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom) or [cachyos-proton](https://wiki.cachyos.org/configuration/gaming/#essential-packages).**
-  
+
 - **Stable hardware, software, and network.** Many VR issues can be tracked down to being unrelated to the VR hardware or software. Ensure your system is up to snuff before attempting to run VR in Linux.
-  
+
 - A fully functioning [Steam](https://store.steampowered.com/about/) installation.
-  
+
 
 ## Compromises
 
 WiVRn has several limitations compared to other streaming solutions, especially those that utilize Microsoft Windows. Before deciding if this guide is for you, be aware of the following limitations:
 
 - **No spacewarp/motion smoothing.**
-  
+
   - Currently no form exists for Linux that I personally know of. If you run older/weaker hardware and are already heavily dependent on frame gen to provide stable frame rates in VR, be aware that your FPS will be cut in HALF by moving to Linux due to lack of any motion smoothing. You can compensate by lowering your streaming resolution, but it will result in a loss of quality otherwise.
 - **Time investment:**
-  
+
   - Expect some extra troubleshooting and setup, as per this guide. Knowledge is key, and although the switch from Windows to Linux seems daunting, it just takes learning and practice like with anything. This guide should help you on your journey, and make things far more painless for you.
 
 ---
@@ -134,11 +134,11 @@ You will first be greeted by the setup wizard. For this guide, you can skip the 
 Note the two sliders:
 
 - Running:
-  
+
   - If this is toggled off, WiVRn will not run or accept connections from any headsets. You should always leave this toggled on.
     - _Note: The WiVRn dashboard **MUST** be open on your desktop or the server will not be running or accept new connections. Completely closing the WiVRn dashboard completely shuts it down entirely._
 - Pairing:
-  
+
   - Enabled by default, the pairing slider allows headsets to be paired to your computer.
 
 First, let’s set up WiVRn optimally for streaming quality and performance. Go ahead and click the “Settings” button in the top right of the WiVRn dashboard.
@@ -148,15 +148,15 @@ First, let’s set up WiVRn optimally for streaming quality and performance. Go 
 Edit the following settings:
 
 - Manual foveation:
-  
+
   - Set this to a minimum of 20%. Setting it lower than 20% may result in encoder overload in Linux. You can increase the slider to higher values to decrease encoder load, but the higher you go the more the outside of the image in your headset will be rendered at a lower resolution, reducing image quality the higher you go. 20% appears to be the sweet spot for Quest headsets.
 - Bitrate:
-  
+
   - This setting will depend on your encoder, available GPU power, and your wireless network. A good starting point is the default 50 MBit/s, which any decent router and network setup can easily handle. I personally use 120 MBit/s, as that is a decent balance of latency and quality.
     - _NOTE: Values higher than 120 MBit/s may result in encoder or network overload depending on your hardware setup._
     - _NOTE: Close the app on your headset, fully shut down your VR game, and fully restart the dashboard to ensure the settings take full effect after making any changes._
 - Encoder Layout:
-  
+
   - To set up the encoder layout, use the drop down box and select the “Low latency preset”. This will split the encoder into three threads, and you can then click in each box and force each of them to vaapi with H.265. Make sure not to click the center of the boxes or it will create another encoder split and you will have to start over.
 
 Refer to the following tables to determine what encoder and codec to use. Take note that your hardware must also support the relevant codecs to be able to use them.
@@ -216,18 +216,18 @@ Select the settings page on the left side of the panel in front of you.
 ![WiVRn Headset Settings Tab](/assets/images/wivrn_headset_settings.webp)
 
 - Refresh Rate:
-  
+
   - I recommend only using at max the 90 Hz refresh rate on battery powered headsets. 120 Hz will heat up your headset SOC and battery, and decrease your overall internal battery lifespan vs 90 Hz, as well as reduce battery life by around 25%.
 - Resolution scale:
-  
+
   - By default, WiVRn runs games at 140% resolution.
     - The extra 40% accounts for [barrel distortion](https://developers.meta.com/horizon/documentation/native/pc/dg-render/). Note that this article applies to all modern headsets, not just Rift as the documents suggests.
     - If you have a weaker GPU, you can turn this slider down to improve performance, which will result in a loss of image clarity. Note that turning the slider down will decrease the resolution and clarity in the center of the display first -- the lower the resolution slider is, the bigger the circle with a lower resolution will become.
 - Enable microphone:
-  
+
   - Enable this to allow the in-headset microphone to pass through to your computer. You will get a prompt from the headset asking to enable microphone permissions, and you must accept them for microphone passthrough to work.
 - Show performance metrics:
-  
+
   - Enable performance metrics which will show an overlay when you connect to games to troubleshoot performance (this overlay will show up by default and can be hidden by pushing both thumb sticks down at the same time). The overlay is a great troubleshooting tool.
 
 ### WiVRn App Post Processing Tab
@@ -247,13 +247,13 @@ The recommended proton version will vary depending on your distro of choice, and
 There are many resources you can use to check game compatibility and determine the best Proton version to use for a specific game or distro.
 
 - [ProtonDB](http://protondb.com/)
-  
+
   ProtonDB is a crowd sourced compatibility list for games on Proton in Linux. You can simply search for your game on the site. Use the filter options on the site to search for similar hardware specs to yours, and even sort reports by distro. A great resource for determining relevant Proton versions or launch parameters needed to get your games working. You can also easily submit your own reports to help out the community!
-  
+
 - [Are We Anti-Cheat Yet?](https://areweanticheatyet.com/)
-  
+
   A great resource for checking if your online/multiplayer game supports Linux. Certain games, particularly those with kernel level anti-cheat don't support Linux and may even ban you for attempting to play. Note that using kernel level anti-cheat even in Microsoft Windows can have various [possible privacy, security, stability, and performance drawbacks](https://gist.github.com/stdNullPtr/2998eacb71ae925515360410af6f0a32#the-risks-of-kernel-level-access), and it's highly unlikely such level of access will ever be adopted into Linux because of these issues due to the ethical and security concerns of such wide access.
-  
+
 
 ### Bazzite/PikaOS
 
@@ -275,9 +275,8 @@ There are tons of other Proton versions you can try, but I personally have never
 There are two custom proton versions that come bundled with CachyOS.
 
 - **proton-cachyos** - based on Proton bleeding-edge, this is a custom Proton version that uses native libraries and has a ton of tweaks. This is best installed along with Steam and other dependencies using the [CachyOS Wiki](https://wiki.cachyos.org/configuration/gaming/#essential-packages) instructions.
-  
+
 - **proton-cachyos-slr** - a version of Proton that supports both [Easy Anti-Cheat (EAC)](https://www.easy.ac/) and [BattlEye (BE)](https://www.battleye.com/) anti-cheats in games. If a game you play uses either of these, make sure to install the package "proton-cachyos-slr" and manually enable it for each game that needs it. Without this proton version you risk being kicked from servers or having connection issues.
-  
 
 You can easily install both of these versions of Proton in CachyOS with the following command:
 
@@ -551,20 +550,19 @@ OpenSpeedTest should be open on your desktop so it can await connections. To tes
 Now, due to following:
 
 1. Take note of the address listed inside of the server GUI on your desktop. You will need to manually type this in shortly on your headset.
-  
+
 2. Put on your headset and ensure you connected to the right network.
-  
+
 3. Open the "Browser" app on your headset and navigate to the IP address of the server. Fully type it in manually, including port.
-  
+
   - > http://192.168.1.224:3000?=60s
-    
-  
+
   Note that the exact IP will vary for each user. Also note I have appended ?=60s to the end of the URL -- this will make the server perform a 60 second test instead of the default shorter test so we can get better results.
-  
+
 4. The webpage should load and show a blue "Start" button in the lower left. Simply click this button to start the speedtest. The test takes about two minutes.
-  
+
 5. When finished, you should see the results page similar to this:
-  
+
 
 ![OpenSpeedTest Results](/assets/images/openspeedtest.webp)
 
@@ -585,23 +583,23 @@ Even with all these things considered, if you live in an area that is heavily co
 There is a free tool to check for this interference from from your phone. The two I will recommend can be installed from Google Play (I have an android phone and have tested both of these apps.) If you use Apple, you can check your store and search for "WiFi Analyzer" apps to scan the area.
 
 -    [WiFi Analyzer](https://play.google.com/store/apps/details?id=com.pzolee.wifiinfo)
-  
+
   - Free Version and Paid Version with more features (Free version will work fine)
-    
-  
+
+
   Ideally you would have a free 5GHz channel in your area. If you live near many people, most of these channels will already be in use.
-  
+
   The best practices in order of best case scenarios are as follows:
-  
+
   - A clean, unused channel, supporting the highest width supported.
-    
+
     - A shared channel that exactly lines up with another channel, but the conflicting signal is of low quality.
-      
+
       - A shared channel exactly lines up with another channel, but matching signal strengths.
-        
-  
+
+
   Note that having a shared channel isn't a bad thing, so long as the channel is EXACTLY overlapping with yours. channels that share only part of the total channel width as yours will cause packet loss and interference will all channels in that spectrum (including their own!) Non-overlapping channels are best!
-  
+
 
 ### Understanding WiFi Channels
 
@@ -614,9 +612,9 @@ Note that on most ISP provided and cheap routers, the DFS(dynamic frequency sele
 With newer routers like the [Asus RT AX-3000](https://www.amazon.com/ASUS-RT-AX3000-802-11ax-Lifetime-Whole-Home/dp/B084BNH26P?th=1) do have DFS channel availability, increasing the amount of WiFi channels you may be able to use. These channels are allowed by the FCC on supported devices, but these channels come with caveats.
 
 - These channels are shared with military aircraft radars, weather station radars, and other military/government equipment. **By federal law, if your router detects any such aircraft or facilities using these channels, your devices MUST change channel right away -- usually to a non-DFS channel, causing an interruption in your connection!**
-  
+
 - Only devices tested and certified by the FCC in the United States can be allowed or sold to use these channels.
-  
+
 
 This channel switching cannot be disabled if you use DFS channels, and a failure to auto-switch channels is a violation of federal law, at least in the United States. Only devices that have their signal switching and are approved by the FCC and fully tested may use them as thing signal switching capability must work when needed.
 
