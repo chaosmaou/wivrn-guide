@@ -137,29 +137,22 @@ Note the two sliders:
 
   - If this is toggled off, WiVRn will not run or accept connections from any headsets. You should always leave this toggled on.
     - _Note: The WiVRn dashboard **MUST** be open on your desktop or the server will not be running or accept new connections. Completely closing the WiVRn dashboard completely shuts it down entirely._
+  - You can hide the WiVRn dashboard while it is running but clicking the tray icon once. Minimizing or closing to tray isn't supported at this time.
 - Pairing:
 
   - Enabled by default, the pairing slider allows headsets to be paired to your computer.
 
 First, let’s set up WiVRn optimally for streaming quality and performance. Go ahead and click the “Settings” button in the top right of the WiVRn dashboard.
 
+You should now see this page:
+
 ![WiVRn Dashboard Settings](/assets/images/wivrn_dashboard_settings.webp)
 
-Edit the following settings:
+Note the following settings:
 
-- Manual foveation:
+- Encoder:
 
-  - Set this to a minimum of 20%. Setting it lower than 20% may result in encoder overload in Linux. You can increase the slider to higher values to decrease encoder load, but the higher you go the more the outside of the image in your headset will be rendered at a lower resolution, reducing image quality the higher you go. 20% appears to be the sweet spot for Quest headsets.
-- Bitrate:
-
-  - This setting will depend on your encoder, available GPU power, and your wireless network. A good starting point is the default 50 MBit/s, which any decent router and network setup can easily handle. I personally use 120 MBit/s, as that is a decent balance of latency and quality.
-    - _NOTE: Values higher than 120 MBit/s may result in encoder or network overload depending on your hardware setup._
-    - _NOTE: Close the app on your headset, fully shut down your VR game, and fully restart the dashboard to ensure the settings take full effect after making any changes._
-- Encoder Layout:
-
-  - To set up the encoder layout, use the drop down box and select the “Low latency preset”. This will split the encoder into three threads, and you can then click in each box and force each of them to vaapi with H.265. Make sure not to click the center of the boxes or it will create another encoder split and you will have to start over.
-
-Refer to the following tables to determine what encoder and codec to use. Take note that your hardware must also support the relevant codecs to be able to use them.
+  - Use the following tables to determine what is best based on your GPU.
 
 - Quest 2 | Quest Pro | Pico Neo 4 | HTC Vive Focus 3 | HTC Vive XR Elite:
 
@@ -178,6 +171,16 @@ Refer to the following tables to determine what encoder and codec to use. Take n
 If your GPU hardware doesn't support AV1, use H265 as fallback instead.
 
 You can try switching your codec to h.264 to get a reduction in latency, but note that you may see more banding in gradients if you do so. (This is true even on 8 bit displays!)
+
+I personally set mine as seen in the image above for my AMD GPU to ensure I am always using hardware acceleration.
+
+- Autostart application:
+
+This allows you to launch a specific game or application once WiVRn has successfully connected to your computer. This is very useful, for instance when setting up wlx-overlay-s as covered in the later part of the guide.
+
+- OpenVR compatibility library:
+
+One of the major advantages to using the WiVRn flatpak is that it already comes bundled with xrizer, which will allow you to play certain games that normally require OpenVR/Steam VR such as Half Life:Alyx in OpenXR instead, completely removing the need for Steam VR to even be installed.
 
 ---
 
@@ -207,7 +210,7 @@ Once connected to your computer, you should see a message stating it was success
 
 At this point, WiVRn is connected to your computer and is waiting for a game to start. By default, there is no way to control your Linux desktop or launch games from within the headset itself, but we will address this shortcoming later in the guide.
 
-Now click the blue “disconnect” button as we need to change some settings in the app directly for the best experience.
+Now click the blue “disconnect” button as we need to change some settings in the app directly for the best experience. Many such settings can only be changed while you are disconnected from your computer.
 
 ### WiVRn App Settings Tab
 
@@ -215,28 +218,43 @@ Select the settings page on the left side of the panel in front of you.
 
 ![WiVRn Headset Settings Tab](/assets/images/wivrn_headset_settings.webp)
 
+- Language:
+
+  - You can easily change the language of the UI to that of your choice here.
+
 - Refresh Rate:
 
-  - I recommend only using at max the 90 Hz refresh rate on battery powered headsets. 120 Hz will heat up your headset SOC and battery, and decrease your overall internal battery lifespan vs 90 Hz, as well as reduce battery life by around 25%.
-- Resolution scale:
+  - I recommend only using at max the 90 Hz refresh rate on battery powered headsets. 120 Hz will heat up your headset SOC and battery, and decrease your overall internal battery lifespan vs 90 Hz, as well as reduce battery life by around 25%. At 90hz, you will have to keep your CPU and GPU frametimes under 11.1ms in order to prevent issues.
+
+- Resolution resolution:
 
   - By default, WiVRn runs games at 140% resolution.
     - The extra 40% accounts for [barrel distortion](https://developers.meta.com/horizon/documentation/native/pc/dg-render/). Note that this article applies to all modern headsets, not just Rift as the documents suggests.
-    - If you have a weaker GPU, you can turn this slider down to improve performance, which will result in a loss of image clarity. Note that turning the slider down will decrease the resolution and clarity in the center of the display first -- the lower the resolution slider is, the bigger the circle with a lower resolution will become.
+  - If you have a weaker GPU, you can turn this slider down to improve performance, which will result in a loss of image clarity. Note that turning the slider down will decrease the resolution and clarity in the center of the display first -- the lower the resolution slider is, the bigger the circle with a lower resolution will become.
+
+- Stream resolution:
+
+  - Newer versions of WiVRn send the stream resolution at 50% by default, which adjusts the foveated encoding that WiVRn uses. When set to 100%, you can disable foveation entirely for the highest picture quality. Turning this slider up will require more GPU power depending on how intensive of a game you play is. Adjust accordingly and try to strike a balance between image quality and performance.
+
+- Codec:
+  - H.265 is preferred over H.264 as it will result in a smaller encoded video size while streaming, and also allow for checking "10-bit" to show less color banding it the image, as well as more striking dark scenes. H256 generally adds about 3ms of extra latency during the encoding process, but this trade off is worth it for the higher quality image and less banding.
+
+- Bitrate:
+  - WiVRn should be able to support the full 200Mbit/s bitrate on good WiFi networks with little interference. The quality difference is only noticeable at sub 80Mbit/s bitrates.
+
+- High power mode
+  - Useful for getting high quality recordings in headset, but will drain your battery faster and also force the GPU to a higher clock rate. This can cause massive stuttering and headset issues if it overheats, so I recommend leaving this unchecked, especially if you record on your desktop instead.
+
 - Enable microphone:
 
   - Enable this to allow the in-headset microphone to pass through to your computer. You will get a prompt from the headset asking to enable microphone permissions, and you must accept them for microphone passthrough to work.
 - Show performance metrics:
 
-  - Enable performance metrics which will show an overlay when you connect to games to troubleshoot performance (this overlay will show up by default and can be hidden by pushing both thumb sticks down at the same time). The overlay is a great troubleshooting tool.
-
 ### WiVRn App Post Processing Tab
 
 ![WiVRn Headset Post Processing Tab](/assets/images/wivrn_headset_post_processing.webp)
 
-Enable quality sharpening when running the default 140% resolution. If you turn the slider down, you would turn sharpening off and use quality supersampling instead.
-
-Snapdragon Super Resolution has been replaced by the OpenXR processing options at the top, which you can see the warnings about by hovering over the yellow warning icon in the app.
+Enable quality supersampling when running the default 140% resolution. If you turn the slider down to a resolution lower than your headsets resolution, you would turn supersampling off and use quality sharpening instead.
 
 ---
 
@@ -288,19 +306,17 @@ In addition to these CachyOS specific versions, you can also easily install Prot
 
 ## Enabling ntsync
 
-To enable ntsync, you must manually enable it for each game that you want to use it with. This must be done on a per-game basis in each individual games properties in Steam.
-
-![Steam Launch Parameters](/assets/images/steam_proton.webp)
+Ntsync is now enabled by default when using Proton-GE, and no user input is needed to get it work.
 
 ### Verify ntsync is functioning correctly
 
-To check if ntsync is working, simply launch a game once the launch parameter has been entered and use lsof from the terminal:
+To check if ntsync is working, simply launch a game using Proton-GE and use lsof from the terminal:
 
 > lsof /dev/ntsync
 
 This will print out any processes using ntsync at the time of running. It should list various steam processes, including your game executable.
 
-Note that this only means ntsync is enabled with your game. Most games will work fine with ntsync and may receive various performance benefits that come with it, but for some games it may cause issues. Perform your own testing to determine if it is worth using, especially if the game isn't covered in
+Note that this only means ntsync is enabled with your game. Most games will work fine with ntsync and may receive various performance benefits that come with it, but for some games it may cause issues. Perform your own testing to determine if it is worth using, especially if the game isn't covered in ProtonDB well. *NOTE* If you run into issues with Proton-GE, always try the latest stable official proton version.
 
 ---
 
@@ -318,9 +334,11 @@ These should auto connect in the future when you connect, and only need to be se
 
 If you use a different audio device like a separate headset, just select those audio devices instead.
 
+If selecting the audio device doesn't seem to "save" your prefered outputs, you can install "pavucontrol" from Bazaar. Use that application to setup your default audio devices before, during, and after headset connection, then your system should "remember" your default devices going forward.
+
 ## Testing a game
 
-At this point, it is a good idea to just launch a VR game and see how the it runs before playing with mods. You will have to manually run the game from Steam on you monitor the first time.
+At this point, it is a good idea to just launch a VR game and see how the it runs before playing with mods or tweaks. You can either run the game from Steam on you monitor or use the following .
 
 If the game starts on your desktop but doesn’t connect to the headset, try fully re-booting WiVRn and Steam. Sometimes it also takes a full reboot of the headset and computer to make things work.
 
@@ -328,6 +346,87 @@ You way tweak the WiVRn dashboard settings as discussed previously. Try increasi
 
 If you still have quality or stream corruption issues, especially if having to drop the bitrate down to 50 MBit/s or lower, then suspect a faulty hardware or software install, or network quality issues.
 
+Once your game is running, get to a good stop where you can pause the game, or stay at the main menu. All that matters at this point is the game is putting some GPU load on your system, and that your actually running a VR application.
+
+## Getting to know WiVRn
+
+Once connected to your PC, some of the interface within WiVRn will change. You can pull up the WiVRn user interface at any time by pushing down both thumbsticks at the time on each of your VR controllers.
+
+You should then see the following menu show up. Note that it can be grabbed by pointing your controller at it and holding grip to move it around in 3D space.
+
+![WiVRn Applications](/assets/images/wivrn_headset_applications.webp)
+
+The default tab is the "Applications" tab. This shows your running VR apps, as well as any overlays, and easily allows you to kill any of them with the red X on the right side.
+
+The next tab is "Start".
+
+![WiVRn Start](/assets/images/wivrn_headset_start.webp)
+
+The start tab detects any Steam games that you can start streaming without having to use your physical mouse and keyboard. Note that this normally only shows Steam games, and will launch them using the normal options, so not all games work out of the box.
+
+The next tab is "Settings", and this is where you can tweak more.
+
+![WiVRn Settings](/assets/images/wivrn_headset_settings.webp.webp)
+
+Note that this settings page is different from the previous one that shows up before you connnect to your PC.
+
+The options are:
+
+  - Refresh rate: This allows you to easily change your refresh rate while in game. Useful for lowing the refresh rate in more intense games.
+  
+  - Bitrate: You can click this button to change your bitrate in real time. The overlay should change to the following:
+  
+![WiVRN Bitrate Adjust](/assets/images/wivrn_headset_bitrate_adjust.webp)
+
+You may now more your right joystick up and down to adjust the VR bitrate in real time and actively see the quality changes. When done, click "A" on your right controller to return to the previous screen.
+  
+  - OpenXR post-processing: We setup these options previously, and they don't need any adjustment.
+  
+  - Foveation center override: You shouldn't need to change this unless your headset is very new or unsupported by WiVRn.
+  
+Next is the "Stats" tab.
+
+![WiVRN Stats](/assets/images/wivrn_headset_stats.webp)
+
+The Stats page is very important and allows you to understand your CPU and GPU frametimes, your network conditions, as well as encoder timings which are often split into multiple encoders, which is why there are multiple timing graphs.
+
+The graphs will be broken down more in the next page.
+
+ - CPU and GPU frame times: At 90hz, you want both of these to remain under 11.1ms. Any spikes above that will result is missing or discarded frames to the headset, and in high motion games you might get sick while playing VR. *NOTE* In my images, the screenshot shows higher frame times because of the Quest 2 native screenshot function causes a short pause in the display, throwing off timing from WiVRn.
+ 
+The next two tabs titled "Statistics overlay" and "Compact view" are both static overlays that will display over your current game.
+
+![WiVRN Statistics overlay](/assets/images/wivrn_headset_statistics_overlay.webp)
+
+The "Statistics overlay" tab is the same as the previous "Stats" page -- but this time in an overlay instead of a tab.
+
+Here are some details about the relevant graphs.
+
+ - CPU time: Shows your current CPU frame time processing in milliseconds (ms). A value greater than 11.1ms would indicate a CPU bottleneck, memory, or driver issue.
+ 
+ - GPU time: Shows your current GPU frame time processing in millisceonds (ms). A value greater than 11.1ms would indicate a GPU or PCI-E lane bottleneck.
+ 
+ - Network: This shows your related network bandwidth being used. Note that the usage depends on many factors including the encoder and how much movement and detail is in a scene. In the above screenshot, I can see the Network graph averages around 120Mbit/s, even with my encoder set to 200Mbit/s as I am not moving my head and it's mostly a static scene in the background with a bit of movement. What you don't want to see in this graph are huge spikes or drops constantly -- that would indicate a network issue.
+ 
+ - Timings: These show the various steps in the encoding, processing, and decoding phases. WiVRn calculates the full chain, so anything below 100ms should be okay for fast VR movement, with 80ms or lower considered very good. *NOTE* 20ms is the "actual" maximum motion to photon latency in reality to prevent motion sickness, but WiVRn is measuring the entire chain GPU chain, resulting in a much higher number here.
+ 
+As this page says at the bottom, press both thumbsticks down to close the overlay and return to the normal menu.
+
+![WiVRN Compact view](/assets/images/wivrn_headset_settings_compact_view.webp)
+
+The "Compact view" is the simplest overlay in terms of determining your performance at a glance.
+
+ - Download: The download rate in Mbit/s from your computer to your headset in realtime.
+ 
+ - Upload: The upload rate in MBit/s from your headset to your computer in realtime. This includes motion tracking data from your headset and microphone if enabled.
+ 
+ - CPU and GPU time: Both should be below 11.1ms at 90hz. Lower values for GPU frame times indicate you may have some headroom to raise the resolution.
+ 
+ - Motion to photon latency: This value should remain between 80-100ms in WiVRn for optimal gameplay. Lower values are ALWAYS better.
+
+Finally, there is a "Close" tab that will simple close out the overlay and allow you to return to game (you can also just use the thumbsticks to close it any time).
+
+The "Disconnect" button can be used to close your connection to your computer, which is useful if you have multiple computers in the same network you want to connect to.
 ---
 
 ## wlx-overlay-s:
