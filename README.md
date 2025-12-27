@@ -115,7 +115,7 @@ The installation method for WiVRn will vary depending on your distro of choice.
 
 Search for "WiVRn" in your package manager of choice (Bazaar on Bazzite or Discover and PikaOS) and install the Flatpak for it.
 
-![Bazaar Flatpak Manager](/assets/images/bazaar_wivrn.webp?msec=1757257046966)
+![Bazaar Flatpak Manager](/assets/images/bazaar_wivrn.webp)
 
 #### CachyOS
 
@@ -129,7 +129,7 @@ Go ahead and launch WiVRn via your application launcher if you have not already.
 
 You will first be greeted by the setup wizard. For this guide, you can skip the wizard completely by clicking through it and accepting all defaults until you get to the main page:
 
-![WiVRn Dashboard](/assets/images/wivrn_dashboard.webp?msec=1757257046966)
+![WiVRn Dashboard](/assets/images/wivrn_dashboard.webp)
 
 Note the two sliders:
 
@@ -143,7 +143,7 @@ Note the two sliders:
 
 First, let’s set up WiVRn optimally for streaming quality and performance. Go ahead and click the “Settings” button in the top right of the WiVRn dashboard.
 
-![WiVRn Dashboard Settings](/assets/images/wivrn_dashboard_settings.webp?msec=1757257046966)
+![WiVRn Dashboard Settings](/assets/images/wivrn_dashboard_settings.webp)
 
 Edit the following settings:
 
@@ -199,11 +199,11 @@ Sometimes the code will time out as pairing mode disables after a few minutes fo
 
 Please also note that your firewall may block connections to your PC. Refer to the [WiVRn GitHub page](https://github.com/WiVRn/WiVRn?tab=readme-ov-file#my-headset-does-not-connect-to-my-computer) for instructions on what ports to allow.
 
-![WiVRn Headset Server List](/assets/images/wivrn_headset_server_list.webp?msec=1757257046966)
+![WiVRn Headset Server List](/assets/images/wivrn_headset_server_list.webp)
 
 Once connected to your computer, you should see a message stating it was successful like so:
 
-![WiVRn Headset Connected Message](/assets/images/wivrn_headset_connected.webp?msec=1757257046967)
+![WiVRn Headset Connected Message](/assets/images/wivrn_headset_connected.webp)
 
 At this point, WiVRn is connected to your computer and is waiting for a game to start. By default, there is no way to control your Linux desktop or launch games from within the headset itself, but we will address this shortcoming later in the guide.
 
@@ -213,7 +213,7 @@ Now click the blue “disconnect” button as we need to change some settings in
 
 Select the settings page on the left side of the panel in front of you.
 
-![WiVRn Headset Settings Tab](/assets/images/wivrn_headset_settings.webp?msec=1757257046967)
+![WiVRn Headset Settings Tab](/assets/images/wivrn_headset_settings.webp)
 
 - Refresh Rate:
   
@@ -232,7 +232,7 @@ Select the settings page on the left side of the panel in front of you.
 
 ### WiVRn App Post Processing Tab
 
-![WiVRn Headset Post Processing Tab](/assets/images/wivrn_headset_post_processing.webp?msec=1757257046967)
+![WiVRn Headset Post Processing Tab](/assets/images/wivrn_headset_post_processing.webp)
 
 Enable quality sharpening when running the default 140% resolution. If you turn the slider down, you would turn sharpening off and use quality supersampling instead.
 
@@ -260,11 +260,11 @@ There are many resources you can use to check game compatibility and determine t
 - [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom)Proton-GE is a very popular version of Proton that is not associated with Valve or Steam. Created and maintained by Thomas Crider, aka [GloriousEggroll](https://github.com/GloriousEggroll), this version has lots of tweaks and improvements over the default proton versions, and also has ntsync support enabled in it's latest versions.
   - Install: Open up ProtonPlus from your application launcher (installed by default).
 
-![ProtonPlus](/assets/images/ProtonPlus_Main.webp?msec=1757257046967)
+![ProtonPlus](/assets/images/ProtonPlus_Main.webp)
 
 Click on “Proton-GE” listed at the top of the page in ProtonPlus.
 
-![ProtonPlus ProtonGE](/assets/images/ProtonPlus_ProtonGE.webp?msec=1757257046967)
+![ProtonPlus ProtonGE](/assets/images/ProtonPlus_ProtonGE.webp)
 
 Click on the download icon next to "Proton-GE Latest" and wait for it to download. If you run into issues with games on this latest version, try the next one down on the list (GE-Proton10-10 in the example image).
 
@@ -291,7 +291,7 @@ In addition to these CachyOS specific versions, you can also easily install Prot
 
 To enable ntsync, you must manually enable it for each game that you want to use it with. This must be done on a per-game basis in each individual games properties in Steam.
 
-![Steam Launch Parameters](/assets/images/steam_proton.webp?msec=1757257046967)
+![Steam Launch Parameters](/assets/images/steam_proton.webp)
 
 ### Verify ntsync is functioning correctly
 
@@ -337,7 +337,7 @@ If you still have quality or stream corruption issues, especially if having to d
 
 You will be able to fully control your PC monitors, type on a virtual keyboard, listen to music, watch videos, and use your web browser in your headset.
 
-![wlxoverlays](/assets/images/wlx-s.webp?msec=1757257046967)
+![wlxoverlays](/assets/images/wlx-s.webp)
 
 ### wlx-overlay-s Install
 
@@ -353,7 +353,7 @@ Then open your relevant app store (Bazaar on Bazzite and Discover on CachyOS/Pik
 
 Once downloaded, right click on the Appimage file on your computer and select “Open with Gear Lever”.
 
-![Open with "Gear Lever"](/assets/images/gear_lever.webp?msec=1757257046968)
+![Open with "Gear Lever"](/assets/images/gear_lever.webp)
 
 You must click “unlock” to verify you want to make changes in Gear Lever, then you can click “Move to the app menu” to install the Appimage on your system. The image will be moved into the folder “AppImages” in your home folder and will have its permissions updated automatically.
 
@@ -381,7 +381,7 @@ You can automatically set wlx-overlay-s to run automatically once your headset c
 
 Go to the main WiVRn dashboard page again.
 
-![WiVRn Dashboard](/assets/images/wivrn_dashboard.webp?msec=1757257046966)
+![WiVRn Dashboard](/assets/images/wivrn_dashboard.webp)
 
 Notice the "Application" field on this page -- this is the default program that WiVRn will run once you connect to your computer.
 
@@ -566,7 +566,7 @@ Now, due to following:
 5. When finished, you should see the results page similar to this:
   
 
-![OpenSpeedTest Results](/assets/images/openspeedtest.webp?msec=1757264361440)
+![OpenSpeedTest Results](/assets/images/openspeedtest.webp)
 
 Since I am using a dedicated AP with only my headset connected, I am getting very good results as shown in the image above. This is also because I have little to no interference and play within line of sight of my router, about 5-6 feet away. These speeds are possible even with longer ethernet cables (25m from PC to router, and 25M from router to main router).
 
@@ -607,7 +607,7 @@ There is a free tool to check for this interference from from your phone. The tw
 
 Study the following image of 5Ghz Channel Allocations in North America:
 
-![WiFi Channels in North America](/assets/images/wifi_channels.webp?msec=1757265804529)
+![WiFi Channels in North America](/assets/images/wifi_channels.webp)
 
 Note that on most ISP provided and cheap routers, the DFS(dynamic frequency selection) channels listed in orange and yellow above are NOT AVAILABLE. Availability of certain wireless channels also varies by countries due to laws. In most cases, only the channels listed in green are easily available.
 
