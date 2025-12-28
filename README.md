@@ -172,7 +172,7 @@ If your GPU hardware doesn't support AV1, use H265 as fallback instead.
 
 You can try switching your codec to h.264 to get a reduction in latency, but note that you may see more banding in gradients if you do so. (This is true even on 8 bit displays!)
 
-I personally set mine as seen in the image above for my AMD GPU to ensure I am always using hardware acceleration.
+I personally set mine as seen in the image above for my AMD GPU to ensure I am always using hardware acceleration. VAAPI results in pretty good latency and good image quality. *NOTE* VAAPI has an issue where they dyanamic bitrate switching doesn't currently work in WiVRn. To change bitrate, you must must adjust it and completely shut down both the headset app and the server on PC.
 
 - Autostart application:
 
@@ -240,7 +240,7 @@ Select the settings page on the left side of the panel in front of you.
   - H.265 is preferred over H.264 as it will result in a smaller encoded video size while streaming, and also allow for checking "10-bit" to show less color banding it the image, as well as more striking dark scenes. H256 generally adds about 3ms of extra latency during the encoding process, but this trade off is worth it for the higher quality image and less banding.
 
 - Bitrate:
-  - WiVRn should be able to support the full 200Mbit/s bitrate on good WiFi networks with little interference. The quality difference is only noticeable at sub 80Mbit/s bitrates.
+  - WiVRn should be able to support the full 200Mbit/s bitrate on good WiFi networks with little interference. The quality difference is only noticeable at sub 80Mbit/s bitrates. *NOTE* When using VAAPI hardware acceleration, you have to fully restart the headset app and server on PC to change it.
 
 - High power mode
   - Useful for getting high quality recordings in headset, but will drain your battery faster and also force the GPU to a higher clock rate. This can cause massive stuttering and headset issues if it overheats, so I recommend leaving this unchecked, especially if you record on your desktop instead.
@@ -373,17 +373,17 @@ Note that this settings page is different from the previous one that shows up be
 The options are:
 
   - Refresh rate: This allows you to easily change your refresh rate while in game. Useful for lowing the refresh rate in more intense games.
-  
+
   - Bitrate: You can click this button to change your bitrate in real time. The overlay should change to the following:
-  
+
 ![WiVRN Bitrate Adjust](/assets/images/wivrn_headset_bitrate_adjust.webp)
 
-You may now more your right joystick up and down to adjust the VR bitrate in real time and actively see the quality changes. When done, click "A" on your right controller to return to the previous screen.
-  
+You may now more your right joystick up and down to adjust the VR bitrate in real time and actively see the quality changes. When done, click "A" on your right controller to return to the previous screen. *NOTE* When using VAAPI the dynamic adjustment does not work. In order to change bitrate, make your changes and fully restart both the headset app and server on PC.
+
   - OpenXR post-processing: We setup these options previously, and they don't need any adjustment.
-  
+
   - Foveation center override: You shouldn't need to change this unless your headset is very new or unsupported by WiVRn.
-  
+
 Next is the "Stats" tab.
 
 ![WiVRN Stats](/assets/images/wivrn_headset_stats.webp)
