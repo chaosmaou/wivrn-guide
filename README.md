@@ -366,7 +366,7 @@ The start tab detects any Steam games that you can start streaming without havin
 
 The next tab is "Settings", and this is where you can tweak more.
 
-![WiVRn Settings](/assets/images/wivrn_headset_settings.webp.webp)
+![WiVRn Settings](/assets/images/wivrn_headset_settings.webp)
 
 Note that this settings page is different from the previous one that shows up before you connnect to your PC.
 
