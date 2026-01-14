@@ -598,7 +598,7 @@ You will only need to open the mod loader to enable or disable specific mods.
 
 - ***With Mod Loader***:
 
-> PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 PRESSURE_VESSEL_FILESYSTEMS_RW=/var/lib/flatpak/app/io.github.wivrn.wivrn/x86_64/stable/68d7958a1999e2762b7d8d36140035b8d7286580b8f0f0c2db4ac0596891f213/files/xrizer PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" %command% --doorstop-enable true
+> PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 PRESSURE_VESSEL_FILESYSTEMS_RW=/var/lib/flatpak/app/io.github.wivrn.wivrn/x86_64/stable/68d7958a1999e2762b7d8d36140035b8d7286580b8f0f0c2db4ac0596891f213/files/xrizer PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" %command%
 
 - **NOTE**:
   - The mod loader MUST use the same proton version that use for the main game. Make sure the proton version in Steam properties for both VTOL VR and the mod loader is identical or you can run into issues with the mods loading correctly.
@@ -611,9 +611,12 @@ You will only need to open the mod loader to enable or disable specific mods.
 
 ### [Half-Life: Alyx](https://store.steampowered.com/app/546560/HalfLife_Alyx/)
 
-Half-Life: Alyx runs very well with OpenXR and WiVRn. I highly recommend forcing the fidelity level to it's highest setting to prevent pop-in of textures and greatly reduce traversal and rotation stutter during gameplay.
+Half-Life: Alyx runs very well with OpenXR and WiVRn. I highly recommend forcing the fidelity level to it's highest setting to prevent pop-in of textures and greatly reduce traversal and rotation stutter during gameplay. Also note that you need the specific Proton version listed below or you will have crashes and graphical issues.
 
 > PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 PRESSURE_VESSEL_FILESYSTEMS_RW=/var/lib/flatpak/app/io.github.wivrn.wivrn/x86_64/stable/68d7958a1999e2762b7d8d36140035b8d7286580b8f0f0c2db4ac0596891f213/files/xrizer %command% PROTON_USE_NTSYNC=1 %command% +vr_fidelity_level_auto 0 +vr_fidelity_level 3
+  - The above fidelity options will stop Alyx from using some tricks that try to help keep a stable framerate in the game. These often result in textures that constantly switch from high to lower resolutions, resulting in some jarring changes while in VR.
+  - Alyx doesn't run on recent version of Proton-GE or Proton Experimental. I have found Proton 8.0-5 to work best with the game..
+  - When loading levels in game, you will be stuck in a grey void with audio. You will hear a beep sound when a level is finished loaded, and can click your trigger on the right controller to load, then display should come back.
 
 ## Troubleshooting
 
