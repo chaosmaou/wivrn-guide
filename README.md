@@ -427,6 +427,7 @@ The "Compact view" is the simplest overlay in terms of determining your performa
 Finally, there is a "Close" tab that will simple close out the overlay and allow you to return to game (you can also just use the thumbsticks to close it any time).
 
 The "Disconnect" button can be used to close your connection to your computer, which is useful if you have multiple computers in the same network you want to connect to.
+
 ---
 
 ## wlx-overlay-s:
