@@ -176,7 +176,7 @@ I personally set mine as seen in the image above for my AMD GPU to ensure I am a
 
 - Autostart application:
 
-This allows you to launch a specific game or application once WiVRn has successfully connected to your computer. This is very useful, for instance when setting up wlx-overlay-s as covered in the later part of the guide.
+This allows you to launch a specific game or application once WiVRn has successfully connected to your computer. This is very useful, for instance when setting up WayVR as covered in the later part of the guide.
 
 - OpenVR compatibility library:
 
@@ -430,83 +430,37 @@ The "Disconnect" button can be used to close your connection to your computer, w
 
 ---
 
-## wlx-overlay-s:
+## WayVR (Formerly wlx-overlay-s:
 
-[wlx-overlay-s](https://github.com/galister/wlx-overlay-s) is a VR overlay for Linux that allows you to fully control your desktop from within VR, similar to how overlays such as xsoverlay or OVR Toolkit work in SteamVR on Windows.
+[WayVR](https://github.com/wlx-team/wayvr) is a VR overlay for Linux that allows you to fully control your desktop from within VR, similar to how overlays such as xsoverlay or OVR Toolkit work in SteamVR on Windows.
 
 You will be able to fully control your PC monitors, type on a virtual keyboard, listen to music, watch videos, and use your web browser in your headset.
 
-![wlxoverlays](/assets/images/wlx-s.webp)
+![wayvr](/assets/images/wlx-s.webp)
 
-### wlx-overlay-s Install
+### WayVR Install
 
-Installing wlx-overlay-s will vary depending on your distro of choice.
+Installing WayVR will vary depending on your distro of choice. Due to my limited ability to test other distros, I will only cover using the WayVR appimage in Bazzite for this guide.
 
-#### Bazzite/PikaOS
+Simply download the latest appimage from the GitHub releases page for WayVR listed above.
 
-The easiest way to get wlx-overlay-s is to use it's Appimage release provided on it's GitHub page.
+Once downloaded, install the appimage with Gear Lever.
 
-Go to the [GitHub](https://github.com/galister/wlx-overlay-s/releases) page and download the latest AppImage from the releases page.
+For other distros, check your package manager or download WayVR from the releases manually.
 
-Then open your relevant app store (Bazaar on Bazzite and Discover on CachyOS/PikaOS) and search for "Gear Lever" and install it. We will use it to install and manage AppImages on your system.
+Also make sure to set your virtual keyboard in KDE settings to "Fcitx 5" so that keyboard inputs from the virutal keyboard in WayVR work correctly. This can be found under "Keyboard" > "Virtual Keyboard" in KDE settings.
 
-Once downloaded, right click on the Appimage file on your computer and select “Open with Gear Lever”.
+### WayVR Setup
 
-![Open with "Gear Lever"](/assets/images/gear_lever.webp)
-
-You must click “unlock” to verify you want to make changes in Gear Lever, then you can click “Move to the app menu” to install the Appimage on your system. The image will be moved into the folder “AppImages” in your home folder and will have its permissions updated automatically.
-
-To allow Gear Lever to automatically update the Appimage, set the source to GitHub and paste the following to always get the latest version directly from the GitHub page:
-
-> https://github.com/galister/wlx-overlay-s/releases/download/*/*-x86_64.AppImage
-
-You should now be notified by gear lever in the future if the appimage has any updates on GitHub, and it will easily allow you to one click update via the GUI.
-
-You can go into Gear Lever's settings and turn on automatic update checking in it's settings.
-
-Then click “Save”. You can check for updates by refreshing metadata at the top of the page.
-
-In the top right of Gear Lever, you can go into settings to set up update notifications for any installed AppImages automatically.
-
-#### CachyOS
-
-Simply install the following AUR package:
-
-> paru -S wlx-overlay-s-git
-
-### wlx-overlay-s Setup
-
-You can automatically set wlx-overlay-s to run automatically once your headset connects to WiVRn.
+You can automatically set WayVR to run automatically once your headset connects to WiVRn.
 
 Go to the main WiVRn dashboard page again.
 
 ![WiVRn Dashboard](/assets/images/wivrn_dashboard.webp)
 
-Notice the "Application" field on this page -- this is the default program that WiVRn will run once you connect to your computer.
+Notice the "Application" field on this page -- simply select "WayVR" from the dropdown to enable WayVR to autostart when your headset connects.
 
-Set application to custom and enter the following into WiVRn depending on your distro of choice:
-
-#### Bazzite/PikaOS
-
-Change **USERNAME** to match your user account name:
-
-> /var/home/USERNAME/AppImages/wlxoverlays.appimage
-
-#### CachyOS
-
-Just launch the native executable:
-
-> wlx-overlay-s
-
-Note that the first time you connect, a window will pop up on your desktop.
-
-wlx-overlay-s needs to know which monitors you have connected to your computer in a specific order.
-
-Follow the pop up messages in the lower right of your monitor and select your displays in the order it tells you to do so. You only have to do this once.
-
-Once the window selections have completed on the PC, you should be able control your desktops now. wlx-overlay-s has a unique control scheme, and you can find out more about it starting on the[ GitHub page.](https://github.com/galister/wlx-overlay-s?tab=readme-ov-file#the-watch)
-
-I recommend fully reading the GitHub page when you have the time. You can customize your controller bindings, disable the quest pass-through, disable space move, and even set a custom texture background for your environment. All the info is already located at the wlx-overlay-s [GitHub page.](https://github.com/galister/wlx-overlay-s) I won't cover these in the guide as the information is already listed there, and much of the setup is specific to each user's preferences.
+I recommend fully reading the GitHub page when you have the time. You can customize your controller bindings, disable the quest pass-through, disable space move, and even set a custom texture background for your environment. All the info is already located at the WayVR [GitHub Wiki page.](https://github.com/wlx-team/wayvr/wiki) I won't cover these in the guide as the information is already listed there, and much of the setup is specific to each user's preferences.
 
 ## xrizer
 
@@ -640,7 +594,7 @@ While their website can be used to test your Internet connection, we will be dow
 
 #### OpenSpeedTest Installation
 
-In Bazzite, CachyOS, or PikaOS, I recommend going to the [download page](https://openspeedtest.com/selfhosted-speedtest) for OpenSpeedTest and fetching the latest AppImage for the GUI. The installation of OpenSpeedTest will be the same as [wlx-overlay-s](#wlx-overlay-s Install). Simply download and install the AppImage with Gear Lever. Note that due to how it is hosted on their website, you cannot enter a URL to update the GUI like with wlx-overlay-s.
+In Bazzite, CachyOS, or PikaOS, I recommend going to the [download page](https://openspeedtest.com/selfhosted-speedtest) for OpenSpeedTest and fetching the latest AppImage for the GUI. The installation of OpenSpeedTest will be the same as [WayVR](#wayvr-install). Simply download and install the AppImage with Gear Lever. Note that due to how it is hosted on their website, you cannot enter a URL to update the GUI like with WayVR.
 
 Once installed, simply launch OpenSpeedTest from your application launcher and it will be awaiting connections from any browser.
 
@@ -685,7 +639,7 @@ Even with all these things considered, if you live in an area that is heavily co
 
 There is a free tool to check for this interference from from your phone. The two I will recommend can be installed from Google Play (I have an android phone and have tested both of these apps.) If you use Apple, you can check your store and search for "WiFi Analyzer" apps to scan the area.
 
--    [WiFi Analyzer](https://play.google.com/store/apps/details?id=com.pzolee.wifiinfo)
+-    [WiFi Analyzer](https://play.google.com/store/apps/details?id=com.pzolee.wifiinfo)
 
   - Free Version and Paid Version with more features (Free version will work fine)
 
