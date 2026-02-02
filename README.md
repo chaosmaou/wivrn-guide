@@ -71,6 +71,8 @@ WiVRn has several limitations compared to other streaming solutions, especially 
 
 I have personally tested VR in both [Bazzite](https://bazzite.gg/), [CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) and [PikaOS](https://wiki.pika-os.com/en/home).
 
+*NOTE: I currently only test Bazzite as it's my main OS and I no longer have access to a seperate system for testing. I will only update the guide for Bazzite going forward, but my previous test results for other distros as well as any tips will remain.*
+
 ### Bazzite
 
 [Bazzite](https://bazzite.gg/) is an semi-immutable distro by [universal blue](https://universal-blue.org/) based on [Fedora Atomic](https://fedoraproject.org/atomic-desktops/). A highly simplified distro, it is mainly designed for ease of use and is very beginner friendly. Mainly uses [Flatpak](https://flatpak.org/) for applications which can easily be installed via the [Bazaar](https://github.com/kolunmi/bazaar) app store. The system is much more locked down that traditional distros, and it is mainly geared towards HTPC setups with controllers. Also has builds for handhelds like the SteamDeck. *NOTE: I personally use Bazzite on my desktop as my main operating system, and I have been using Linux since 2006 (Debian Sarge).*
