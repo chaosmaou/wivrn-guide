@@ -436,7 +436,7 @@ The "Disconnect" button can be used to close your connection to your computer, w
 
 You will be able to fully control your PC monitors, type on a virtual keyboard, listen to music, watch videos, and use your web browser in your headset.
 
-![wayvr](/assets/images/wlx-s.webp)
+![wayvr](/assets/images/wayvr-readme-screenshot.webp)
 
 ### WayVR Install
 
