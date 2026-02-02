@@ -543,23 +543,21 @@ The follow games have been extensively tested on the previously listed hardware 
 
 VTOL VR requires ntsync to run correctly, and enabling it is done the same as any regular flatscreen game -- by added the correct variable to the launch parameters of the game in Steam.
 
-NOTE: These values are *examples*. Make sure you check WiVRn dashboard's main page for the relevant launch parameters to ensure WiVRn can connect to your games correctly.
+NOTE: These values are *examples*. Make sure you check WiVRn dashboard's main page for the relevant launch parameters to ensure WiVRn can connect to your games correctly. The values below are examples from my own installation and yours may vary.
 
 - ***Vanilla Gameplay***:
 
-> PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 PRESSURE_VESSEL_FILESYSTEMS_RW=/var/lib/flatpak/app/io.github.wivrn.wivrn/x86_64/stable/68d7958a1999e2762b7d8d36140035b8d7286580b8f0f0c2db4ac0596891f213/files/xrizer PROTON_USE_NTSYNC=1 %command%
+> PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 PRESSURE_VESSEL_FILESYSTEMS_RW=/var/lib/flatpak/app/io.github.wivrn.wivrn/x86_64/stable/68d7958a1999e2762b7d8d36140035b8d7286580b8f0f0c2db4ac0596891f213/files/xrizer %command%
 
-VTOL VR has has [unofficial mod loader available on Steam](https://store.steampowered.com/app/3018410/VTOL_VR_Mod_Loader/). Many mods hosted on the Steam workshop page for the mod loader do work in multiplayer. Install the free mod loader from steam and search it's workshop for mods. Once downloaded, run the mod loader and enable mods on an individual basis and then close the mod loader.
-
-You will only need to open the mod loader to enable or disable specific mods.
+VTOL VR has has [unofficial mod loader available on Steam](https://store.steampowered.com/app/3018410/VTOL_VR_Mod_Loader/). Many mods hosted on the Steam workshop page for the mod loader do work in multiplayer. Install the free mod loader from steam and search it's workshop for mods. Once downloaded, run the mod loader and enable mods on an individual basis using the rocketship icon in the application.
 
 - ***With Mod Loader***:
 
-> PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 PRESSURE_VESSEL_FILESYSTEMS_RW=/var/lib/flatpak/app/io.github.wivrn.wivrn/x86_64/stable/68d7958a1999e2762b7d8d36140035b8d7286580b8f0f0c2db4ac0596891f213/files/xrizer PROTON_USE_NTSYNC=1 WINEDLLOVERRIDES="winhttp.dll=n,b" %command%
+> PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 PRESSURE_VESSEL_FILESYSTEMS_RW=/var/lib/flatpak/app/io.github.wivrn.wivrn/x86_64/stable/68d7958a1999e2762b7d8d36140035b8d7286580b8f0f0c2db4ac0596891f213/files/xrizer WINEDLLOVERRIDES="winhttp.dll=n,b" %command%
 
 - **NOTE**:
   - The mod loader MUST use the same proton version that use for the main game. Make sure the proton version in Steam properties for both VTOL VR and the mod loader is identical or you can run into issues with the mods loading correctly.
-  - When using the mod loader, you may disable mods and play the vanilla game without having to uninstall the mod loader by simple changing "true" to "false" for the doorstop argument at the end of the launch parameters. Do this to easily switch between modded and vanilla gameplay. You don't have to disable or uninstall mods to play vanilla VTOL VR!
+  - With recent updates to the mod loader, you can leave the launch parameters set as above. When wanting to play with mods, launch the mod loader and click "Play" to start the game modded. If you launch the game normally through Steam, you can play unmodded without having to disable mods or uninstalling the mod loader.
   - When playing with mods in multiplayer, all players must use the exact same mods to be able to play with each other. Also check the VTOL VR mod loader workshop to ensure a mod supports multiplayer. Older mods break, and VTOL VR updates are known to break mods until they are fixed by the mod creators.
 
 ### [Tactical Assault VR](https://store.steampowered.com/app/2314160/Tactical_Assault_VR/)
