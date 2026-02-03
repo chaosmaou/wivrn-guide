@@ -432,7 +432,7 @@ The "Disconnect" button can be used to close your connection to your computer, w
 
 ---
 
-## WayVR (Formerly wlx-overlay-s:
+## WayVR (Formerly wlx-overlay-s):
 
 [WayVR](https://github.com/wlx-team/wayvr) is a VR overlay for Linux that allows you to fully control your desktop from within VR, similar to how overlays such as xsoverlay or OVR Toolkit work in SteamVR on Windows.
 
