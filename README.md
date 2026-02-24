@@ -105,6 +105,34 @@ Check the [Arch Linux Status](https://status.archlinux.org) page for information
 
 PikaOS is still a very new distro without a well known proven track record, but is still ready for daily use. Very beginner friendly like Bazzite, but features similar performance and tweaks like CachyOS, this is a very good distro. This is a good choice if you are familiar with Debian and prefer having a very stable base. Note that because it is based on Debian, certain packages related to your desktop environment will be slightly more out of date compared to the other distros.
 
+## LACT
+
+[LACT](https://github.com/ilya-zlobintsev/LACT), or the "Linux GPU Control Application", does just what it's name suggests. For AMD GPU users, it's very important to properly set the correct power profile when running WiVRn. Without this being set to the "VR" power profile while playing, AMD GPUs try to save some power in between frames, but this can result in motion sickness due to frame jitter, especially when in GPU limited scenarios like VR gaming. The program also works for other GPU brands, but the VR power profile issue only applies to AMD cards.
+
+### LACT Installation
+
+In Bazzite, LACT's flatpak can easily be installed via Bazaar. Simply open LACT and follow the prompts to enable the correct services, and when at the main screen for LACT you will have to enable the AMD overclocking feature. This MUST be done to enable you to control power profiles, and also unlocks custom fan curves and overclocking if needed.
+
+### LACT Setup
+
+As each GPU is different, the actual setup of fan curves and overclocking will not be covered in this guide. It is important that LACT be properly setup for your GPU, especially your boost clocks and power level must be set correctly. If unsure, try to look up your exact GPU model on the internet. Techpowerup has a great library of GPU spec pages that can be easily found by pasting your full "Card Model" and "VBIOS Version" from the "Information" tab in LACT into your web search.
+
+Once LACT has been fully setup and overclocking has been enabled, open up the main GUI. You will click on your GPU in the top left of the application to view profiles, which are not enabled by default.
+
+![LACT](/assets/images/lact_power_profile.webp)
+
+The "Default" profile is the fallback profile when no matching settings are found. Use the "+" button to create a new profile and name it "WiVRn VR" or a similar name. Then set the "Performance LeveL" under the "OC" tab to "Manual", then directly below that set "Power Profile Mode" to "VR". Make sure you only set the VR profile with the "WiVRn VR" profile selected.
+
+Now, using the top left menu, click the hamburger menu next to the new "WiVRn VR" profile that was just created and select "Edit Rules".
+
+![LACT Profile Rules](/assets/images/lact_profile_rules.webp)
+
+Following the above image, you want to make this profile automatically load whenever the "wivrn-server" process is running. This will make the VR power profile load automatically when the server is running on your desktop, then change back to the Default profile after it is closed.
+
+To enable automatic profile switching, you must select the top left menu in LACT again and make sure "Switch automatically" is checked. At this point if everything was done correctly, you should be able to leave LACT open on your desktop and open up the WiVRn dashboard and the profile in the top left of LACT will change from "Default" to "WiVRn VR". You can also check to see that the VR profile is loaded correctly under the "Performance" section of the "OC" tab. Simply closing out of the WiVRn dashboard should make it switch back to the Default profile.
+
+The LACT GUI does not need to be open for profile switching to work, and can be closed at this point, you shouldn't need it going forward unless you want to change settings or fan curves.
+
 ## WiVRn
 
 [WiVRn](https://github.com/WiVRn/WiVRn) wirelessly connects a standalone VR headset to a Linux computer. You can then play PCVR games on the headset while processing is done on the computer.
