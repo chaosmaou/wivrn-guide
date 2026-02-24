@@ -121,7 +121,7 @@ Once LACT has been fully setup and overclocking has been enabled, open up the ma
 
 ![LACT](/assets/images/lact_power_profile.webp)
 
-The "Default" profile is the fallback profile when no matching settings are found. Use the "+" button to create a new profile and name it "WiVRn VR" or a similar name. Then set the "Performance LeveL" under the "OC" tab to "Manual", then directly below that set "Power Profile Mode" to "VR". Make sure you only set the VR profile with the "WiVRn VR" profile selected.
+The "Default" profile is the fallback profile when no matching settings are found. Use the "+" button to create a new profile and name it "WiVRn VR" or a similar name. Then set the "Performance Level" under the "OC" tab to "Manual", then directly below that set "Power Profile Mode" to "VR". Make sure you only set the VR profile with the "WiVRn VR" profile selected.
 
 Now, using the top left menu, click the hamburger menu next to the new "WiVRn VR" profile that was just created and select "Edit Rules".
 
