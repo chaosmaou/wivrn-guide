@@ -191,7 +191,7 @@ Note the following settings:
 | AMD | vaapi | H265 |
 | NVIDIA | nvenc | H265 |
 
-NOTE: On newer kernel and mesa versions (Like in Bazzite), using Vulkan instead of Vaapi is prefered but can have issues with older hardware. Try vulkan and if you still struggle with latency, using vaapi as an alternative.
+NOTE: Above headsets do not support AV1 decoding, even if your GPU supports it, so use H265 instead.
 
 - Quest 3, Quest 3S
 
@@ -200,11 +200,13 @@ NOTE: On newer kernel and mesa versions (Like in Bazzite), using Vulkan instead 
 | AMD | vaapi | AV1 |
 | NVIDIA | nvenc | AV1 |
 
+NOTE: On newer kernel and mesa versions (Like in Bazzite), using Vulkan instead of Vaapi is prefered but can have issues with older hardware. Try vulkan and if you still struggle with latency, using vaapi as an alternative fallback option. I myself have no issues running vulkan on my 7800 XT with at least the 6.17 kernel and Mesa 25.3.4.
+
 If your GPU hardware doesn't support AV1, use H265 as fallback instead.
 
 You can try switching your codec to h.264 to get a reduction in latency, but note that you may see more banding in gradients if you do so. (This is true even on 8 bit displays!)
 
-I personally set mine as seen in the image above for my AMD GPU to ensure I am always using hardware acceleration. VAAPI results in pretty good latency and good image quality. *NOTE* VAAPI has an issue where they dyanamic bitrate switching doesn't currently work in WiVRn. To change bitrate, you must must adjust it and completely shut down both the headset app and the server on PC.
+I personally set mine as seen in the image above for my AMD GPU to ensure I am always using vulkan as it is more supported going forward and now also supports realtime bitrate switching in WiVRn.
 
 - Autostart application:
 
