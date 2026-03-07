@@ -486,7 +486,7 @@ You can automatically set WayVR to run automatically once your headset connects 
 
 Go to the main WiVRn dashboard page again.
 
-![WiVRn Dashboard](/assets/images/wivrn_dashboard.webp)
+![WiVRn Dashboard](/assets/images/wivrn_dashboard_settings.webp)
 
 Notice the "Application" field on this page -- simply select "WayVR" from the dropdown to enable WayVR to autostart when your headset connects.
 
