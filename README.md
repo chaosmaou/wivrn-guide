@@ -191,6 +191,8 @@ Note the following settings:
 | AMD | vaapi | H265 |
 | NVIDIA | nvenc | H265 |
 
+NOTE: On newer kernel and mesa versions (Like in Bazzite), using Vulkan instead of Vaapi is prefered but can have issues with older hardware. Try vulkan and if you still struggle with latency, using vaapi as an alternative.
+
 - Quest 3, Quest 3S
 
 | GPU | Encoder | Codec |
