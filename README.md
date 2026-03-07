@@ -484,7 +484,7 @@ Also make sure to set your virtual keyboard in KDE settings to "Fcitx 5" so that
 
 You can automatically set WayVR to run automatically once your headset connects to WiVRn.
 
-Go to the main WiVRn dashboard page again.
+Go to the main WiVRn dashboard page and click the settings button.
 
 ![WiVRn Dashboard](/assets/images/wivrn_dashboard_settings.webp)
 
