@@ -332,6 +332,9 @@ There are many resources you can use to check game compatibility and determine t
 
   A great resource for checking if your online/multiplayer game supports Linux. Certain games, particularly those with kernel level anti-cheat don't support Linux and may even ban you for attempting to play. Note that using kernel level anti-cheat even in Microsoft Windows can have various [possible privacy, security, stability, and performance drawbacks](https://gist.github.com/stdNullPtr/2998eacb71ae925515360410af6f0a32#the-risks-of-kernel-level-access), and it's highly unlikely such level of access will ever be adopted into Linux because of these issues due to the ethical and security concerns of such wide access.
 
+- [VR on Linux](https://db.vronlinux.org/)
+
+  A community-driven effort to provide an open database that helps users determine which VR games are compatible with Linux and potentially discover solutions or workarounds for specific issues.
 
 ### Bazzite/PikaOS
 
