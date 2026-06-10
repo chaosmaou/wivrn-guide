@@ -104,7 +104,7 @@ Bazzite is best served as a HTPC hooked up to a large TV with Steam Big Picture 
 
 ### CachyOS
 
-CachyOS is hailed for it's flexibility, speed, and availability of most software due to the [Arch User Repository](https://aur.archlinux.org/). CachyOS is also a traditional distro that uses native system packages. I wouldn't recommend CachyOS to novice computer users who are new to Linux. Expect things to work out of the box, but if you want to tweak it you need to learn to ready CachyOS and ArchWiki documentation in detail or you will run into issues.
+CachyOS is hailed for its flexibility, speed, and availability of most software due to the [Arch User Repository](https://aur.archlinux.org/). CachyOS is also a traditional distro that uses native system packages. I wouldn't recommend CachyOS to novice computer users who are new to Linux. Expect things to work out of the box, but if you want to tweak it you need to learn to ready CachyOS and ArchWiki documentation in detail or you will run into issues.
 
 CachyOS has optimized packages for newer AMD Zen processors which can give certain gains in code compilation and gaming, although these are usually almost always single-digit performance improvements.
 
@@ -286,7 +286,7 @@ Select the settings page on the left side of the panel in front of you.
 
   - I recommend only using at max the 90 Hz refresh rate on battery powered headsets. 120 Hz will heat up your headset SOC and battery, and decrease your overall internal battery lifespan vs 90 Hz, as well as reduce battery life by around 25%. At 90hz, you will have to keep your CPU and GPU frametimes under 11.1ms in order to prevent issues.
 
-- Resolution resolution:
+- Render resolution:
 
   - By default, WiVRn runs games at 140% resolution.
     - The extra 40% accounts for [barrel distortion](https://developers.meta.com/horizon/documentation/native/pc/dg-render/). Note that this article applies to all modern headsets, not just Rift as the documents suggests.
@@ -405,7 +405,7 @@ At this point, it is a good idea to just launch a VR game and see how the it run
 
 If the game starts on your desktop but doesn’t connect to the headset, try fully re-booting WiVRn and Steam. Sometimes it also takes a full reboot of the headset and computer to make things work.
 
-You way tweak the WiVRn dashboard settings as discussed previously. Try increasing or lowering the bitrate as needed.
+You may tweak the WiVRn dashboard settings as discussed previously. Try increasing or lowering the bitrate as needed.
 
 If you still have quality or stream corruption issues, especially if having to drop the bitrate down to 50 MBit/s or lower, then suspect a faulty hardware or software install, or network quality issues.
 
