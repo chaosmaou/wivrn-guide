@@ -45,7 +45,7 @@ I fully consider standalone wireless VR as fully stable for regular everyday use
 - **Linux kernel version 6.15 or newer.**
 
   - [ntsync](https://docs.kernel.org/userspace-api/ntsync.html) requires newer kernels. Without it you may run into performance degradation, graphical glitches, or crashes, and some games will not work correctly at all (such as [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/))
-- **A proton branch that supports [ntsync](https://docs.kernel.org/userspace-api/ntsync.html), such as [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom) or [cachyos-proton](https://wiki.cachyos.org/configuration/gaming/#essential-packages).**
+- **A proton branch that supports [ntsync](https://docs.kernel.org/userspace-api/ntsync.html), ~~such as [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom) or [cachyos-proton](https://wiki.cachyos.org/configuration/gaming/#essential-packages).~~ Valve's official Proton 11 or newer is the recommended version as it now features NTSYNC and is enabled by default. You can select this in Steam under the "Compatability" tab in settings and it will automatically download. Custom Proton versions may be useful on a per-game basis.**
 
 - **Stable hardware, software, and network.** Many VR issues can be tracked down to being unrelated to the VR hardware or software. Ensure your system is up to snuff before attempting to run VR in Linux.
 
@@ -594,7 +594,7 @@ The follow games have been extensively tested on the previously listed hardware 
 
 ### [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/)
 
-VTOL VR requires ntsync to run correctly, and enabling it is done the same as any regular flatscreen game -- by added the correct variable to the launch parameters of the game in Steam.
+VTOL VR requires ntsync to run correctly, and enabling it is done the same as any regular flatscreen game -- by added the correct variable to the launch parameters of the game in Steam. Proton 11 or newer have this enabled by default with no user interaction.
 
 NOTE: These values are *examples*. Make sure you check WiVRn dashboard's main page for the relevant launch parameters to ensure WiVRn can connect to your games correctly. The values below are examples from my own installation and yours may vary.
 
