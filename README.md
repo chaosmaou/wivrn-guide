@@ -569,10 +569,10 @@ Router: Asus RT AX-3000 (can be bought on [Amazon](https://www.amazon.com/ASUS-R
 
 ### [Bazzite:](https://bazzite.gg/)
 
-Kernel: 6.17.7-ba22.fc43.x86_64 (64-bit) \
-DE: KDE Plasma 6.5.4 \
-Mesa: 25.3.1 \
-Proton: Proton-GE Latest
+Kernel: 7.1.3-ogc5.1.fc44.x86_64 (64-bit) \
+DE: KDE Plasma 6.7.3 \
+Mesa: 26.1.5 \
+Proton: Proton-GE11-3
 
 ### [CachyOS:](https://cachyos.org/)
 
@@ -586,7 +586,7 @@ Proton: proton-cachyos-slr
 Kernel: Kernel Version: 6.16.3-pikaos \
 DE: KDE Plasma 6.3.6 \
 Mesa: 25.1.7 \
-Proton: Proton-GE10-15 and Proton-GE Latest
+Proton: Proton-GE10-15
 
 ## Games Tested
 
