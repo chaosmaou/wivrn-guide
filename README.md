@@ -8,7 +8,7 @@
 
 ## Summary
 
-The best way I have found to play with standalone VR headsets in Linux is by using [WiVRn](https://github.com/WiVRn/WiVRn).
+The best way I have personally found to play with standalone VR headsets in Linux with the most user friendly setup is by using [WiVRn](https://github.com/WiVRn/WiVRn).
 
 WiVRn is a solution similar to [ALVR](https://github.com/alvr-org/ALVR), [Air Link](https://www.meta.com/help/quest/509273027107091/), and [Virtual Desktop Standalone](https://www.meta.com/experiences/virtual-desktop/2017050365004772/), all providing a wireless solution to VR gaming. ALVR supports both Microsoft Windows and Linux, while both Air Link and Virtual Desktop Standalone both only support Microsoft Windows.
 
@@ -45,11 +45,12 @@ I fully consider standalone wireless VR as fully stable for regular everyday use
 - **Linux kernel version 6.15 or newer.**
 
   - [ntsync](https://docs.kernel.org/userspace-api/ntsync.html) requires newer kernels. Without it you may run into performance degradation, graphical glitches, or crashes, and some games will not work correctly at all (such as [VTOL VR](https://store.steampowered.com/app/667970/VTOL_VR/))
-- **A proton branch that supports [ntsync](https://docs.kernel.org/userspace-api/ntsync.html), ~~such as [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom) or [cachyos-proton](https://wiki.cachyos.org/configuration/gaming/#essential-packages).~~ Valve's official Proton 11 or newer is the recommended version as it now features NTSYNC and is enabled by default. You can select this in Steam under the "Compatability" tab in settings and it will automatically download. Custom Proton versions may be useful on a per-game basis.**
+- **A proton branch that supports [ntsync](https://docs.kernel.org/userspace-api/ntsync.html), ~~such as [Proton-GE](https://github.com/GloriousEggroll/proton-ge-custom) or [cachyos-proton](https://wiki.cachyos.org/configuration/gaming/#essential-packages).~~ Valve's official Proton 11 or newer is the recommended version as it now features NTSYNC and is enabled by default. You can select this in Steam under the "Compatability" tab in settings and it will automatically download. Custom Proton versions such as ProtonGE may be used by default, but when troubleshooting issues with a game, try using the latest official Proton version, sometimes custom versions have regressions.**
+
 
 - **Stable hardware, software, and network.** Many VR issues can be tracked down to being unrelated to the VR hardware or software. Ensure your system is up to snuff before attempting to run VR in Linux.
 
-- A fully functioning [Steam](https://store.steampowered.com/about/) installation.
+- **A fully functioning [Steam](https://store.steampowered.com/about/) installation.**
 
 
 ## Compromises
@@ -58,7 +59,7 @@ WiVRn has several limitations compared to other streaming solutions, especially 
 
 - **No spacewarp/motion smoothing.**
 
-  - Currently no form exists for Linux that I personally know of. If you run older/weaker hardware and are already heavily dependent on frame gen to provide stable frame rates in VR, be aware that your FPS will be cut in HALF by moving to Linux due to lack of any motion smoothing. You can compensate by lowering your streaming resolution, but it will result in a loss of quality otherwise.
+  - Currently no form exists for Linux that I personally know of. If you run older/weaker hardware and are already heavily dependent on frame generation to provide stable frame rates in VR, be aware that your FPS will be cut in HALF by moving to Linux due to lack of any motion smoothing. You can compensate by lowering your streaming resolution, but it will result in a loss of quality otherwise. Example: If you normally require spacewarp to maintain a 90 HZ refresh rate and FPS, switching to Linux may cause you to drop right down the 45HZ/FPS.
 - **Time investment:**
 
   - Expect some extra troubleshooting and setup, as per this guide. Knowledge is key, and although the switch from Windows to Linux seems daunting, it just takes learning and practice like with anything. This guide should help you on your journey, and make things far more painless for you.
@@ -67,23 +68,23 @@ WiVRn has several limitations compared to other streaming solutions, especially 
 
 ## Tested Linux Distributions
 
-*NOTE: this section is based on my own recommendations, experiences, and testing. There are as many Linux distributions as stars in the night sky, so this is not a comprehensive list.*
+*NOTE: this section is based on my own recommendations, experiences, and testing. There are as many Linux distributions as stars in the night sky, so this is not a comprehensive list, it is simply what I have found works well for me.*
 
-I have personally tested VR in both [Bazzite](https://bazzite.gg/), [CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) and [PikaOS](https://wiki.pika-os.com/en/home).
+I have personally tested VR in [Bazzite](https://bazzite.gg/), [CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) and [PikaOS](https://wiki.pika-os.com/en/home).
 
 *NOTE: I have only tested on the following distibutions, but that does not mean the following software in this guide won't work on other distros. I make this guide in free time and can only cover a limited number of distros.*
 
 ### Bazzite
 
-[Bazzite](https://bazzite.gg/) is an semi-immutable distro by [universal blue](https://universal-blue.org/) based on [Fedora Atomic](https://fedoraproject.org/atomic-desktops/). A highly simplified distro, it is mainly designed for ease of use and is very beginner friendly. Mainly uses [Flatpak](https://flatpak.org/) for applications which can easily be installed via the [Bazaar](https://github.com/kolunmi/bazaar) app store. The system is much more locked down that traditional distros, and it is mainly geared towards HTPC setups with controllers. Also has builds for handhelds like the SteamDeck.
+[Bazzite](https://bazzite.gg/) is an semi-immutable distro by [universal blue](https://universal-blue.org/) based on [Fedora Atomic](https://fedoraproject.org/atomic-desktops/). A highly simplified distro, it is mainly designed for ease of use and is very beginner friendly. Mainly uses [Flatpak](https://flatpak.org/) for applications which can easily be installed via the [Bazaar](https://github.com/kolunmi/bazaar) app store. The system is much more locked down that traditional distros, and it is mainly geared towards HTPC setups with controllers. Also has builds for handhelds like the SteamDeck. **Note: Bazzite is currently my primary distro, and is what will probably be most often and recently tested on for the guide.**
 
 ### CachyOS
 
-[CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) is a traditional rolling release distribution based on [Arch Linux](https://archlinux.org/). CachyOS has gained a lot of momentum the past year, and recently reached #1 most popular distro on [Distrowatch](https://distrowatch.org). Features the complexity and flexibility that Arch offers, but simplifies a lot of the setup and comes with tons of tweaks specific to newer hardware, as well as a great GUI installer. Features x86_64-v3 optimized packages for newer CPUs as optional choice during installation.
+[CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) is a traditional rolling release distribution based on [Arch Linux](https://archlinux.org/). CachyOS has gained a lot of momentum in 2025-2026, and recently reached #1 most popular distro on [Distrowatch](https://distrowatch.org). Features the complexity and flexibility that Arch offers, but simplifies a lot of the setup and comes with tons of tweaks specific to newer hardware, as well as a great GUI installer. Features x86_64 v3 and v4 optimized packages for newer CPUs as the standard choice during installation on matching hardware.
 
 ### PikaOS
 
-[PikaOS](https://wiki.pika-os.com/en/home) is a fairly new rolling release distro based on [Debian](https://www.debian.org/intro/why_debian). Unlike Bazzite, PikaOS is a traditional distro that doesn't lock down the system. Features tons of gaming related tweaks like CachyOS, but requires more modern CPUs that support x86_64-v3. A stable base with updated applications thanks to custom packages and Flatpaks, PikaOS uses [Discover](https://apps.kde.org/discover/) as it's app store. Similar to Bazaar that Bazzite uses, Discover is much more mature and features full category sorting. *NOTE: PikaOS is a newer distro that hasn't matured as much as the others. It also features an older kernel and modules, and may cause issues. For me, I had repeated USB resets with my 10 port powered USB hub, even though no other distros had this issue.*
+[PikaOS](https://wiki.pika-os.com/en/home) is a fairly new rolling release distro based on [Debian](https://www.debian.org/intro/why_debian). Unlike Bazzite, PikaOS is a traditional distro that doesn't lock down the system. Features tons of gaming related tweaks like CachyOS, but requires more modern CPUs that support x86_64 v3 or v4. A stable base with updated applications thanks to custom packages and Flatpaks, PikaOS uses [Discover](https://apps.kde.org/discover/) as it's app store. Similar to Bazaar that Bazzite uses, Discover is much more mature and features full category sorting. **NOTE: PikaOS is a newer distro that hasn't matured as much as the others. It also features an older kernel and modules, and may cause issues. For me, I had repeated USB resets with my 10 port powered USB hub, even though no other distros had this issue.**
 
 ## Choosing a Distribution
 
@@ -91,39 +92,43 @@ Choosing a linux distribution can be a difficult choice for many reasons. I will
 
 The following table list these distros, their required "skill levels", and links to the relevant documentation to help you make an informed choice. Note these are recommendations. If in doubt which to use, just use Bazzite, it is by quite a large margin the easiest to setup and use.
 
-| Distribution | Distro Type | Based On | Skill Level | Wiki Link
+| Distribution | Distro Type | Based On | Skill Level | Update Rate | Wiki Link
 | --- | --- | --- | --- | --- |
-| Bazzite | Immutable | Fedora Atomic | Beginner | [Bazzite Docs](https://docs.bazzite.gg/)
-| PikaOS  | Traditional | Debian | Beginner/Intermediate | [PikaOS Wiki](https://wiki.pika-os.com/en/home)
-| CachyOS | Traditional | Arch Linux | Intermediate/Advanced | [CachyOS Wiki](https://wiki.cachyos.org/)
+| Bazzite | Immutable | Fedora Atomic | Beginner | Faster | [Bazzite Docs](https://docs.bazzite.gg/)
+| PikaOS  | Traditional | Debian | Beginner/Intermediate | Slower | [PikaOS Wiki](https://wiki.pika-os.com/en/home)
+| CachyOS | Traditional | Arch Linux | Intermediate/Advanced | Fastest | [CachyOS Wiki](https://wiki.cachyos.org/)
 
 
 ### Bazzite
 
-Bazzite is best served as a HTPC hooked up to a large TV with Steam Big Picture mode and also has images made for the Steam Deck and other handhelds, but also has a standard desktop image featuring KDE Plasma. It's desktop experience is very good, and fully usable on desktops as an everyday operating systems. Bazzite has SELinux enabled by default, and with some post-installaton tweaking it also fully supports Secure Boot and TPM auto-unlock for LUKS encrypted root volumes.
+Bazzite is primarily used as a HTPC hooked up to a large TV with Steam Big Picture mode and also has images made for the Steam Deck and other handhelds, but also has a standard desktop image featuring KDE Plasma. It's desktop experience is very good, and fully usable on desktops as an everyday operating systems. Bazzite has SELinux enabled by default, and with some post-installation tweaking it also fully supports Secure Boot and TPM auto-unlock for LUKS encrypted root volumes on hardware that supports these with proper BIOS and UEFI certificate updates.
 
 ### CachyOS
 
-CachyOS is hailed for its flexibility, speed, and availability of most software due to the [Arch User Repository](https://aur.archlinux.org/). CachyOS is also a traditional distro that uses native system packages. I wouldn't recommend CachyOS to novice computer users who are new to Linux. Expect things to work out of the box, but if you want to tweak it you need to learn to ready CachyOS and ArchWiki documentation in detail or you will run into issues.
+CachyOS is hailed for its flexibility, speed, and availability of most software due to the [Arch User Repository](https://aur.archlinux.org/). CachyOS is also a traditional distro that uses native system packages. I wouldn't recommend CachyOS to novice computer users who are new to Linux. Expect things to work out of the box, but if you want to tweak it you need to learn to ready CachyOS and ArchWiki documentation in detail or you will run into issues. CachyOS also requires you to always be updated to the latest version when making serious changes such as new packages or kernels, and even when updating on a weekly basis it isn't uncommon to need at least few GB of new package downloads, making it a poor choice for those on limited and/or slow network connections.
 
-CachyOS has optimized packages for newer AMD Zen processors which can give certain gains in code compilation and gaming, although these are usually almost always single-digit performance improvements.
+CachyOS has optimized packages for newer AMD Zen processors which can give certain gains in code compilation and gaming, although these are usually almost always single-digit performance improvements when it comes to gaming and regular desktop use. If you compile source code for Linux or Android often, these improvements may give you much faster compile and build times.
 
-The AUR also can be very dangerous if you do not fully check and understand PKGBUILDs as they should personally checked and validated by you for each package you want. The AUR can be an avenue for malware, so package sources should be careful understood and vetted by the user.
+The AUR also can be **very dangerous** if you do not fully check and understand PKGBUILDs as they should personally checked and validated by you for each package you want. The AUR can be an avenue for malware, so package sources should be careful understood and vetted by the user. **I personally was hit by malware in 2026 (the alvr AUR package) and had my Discord client and browser data compromised, and I have been using linux since 2006!!!**
 
-The [CachyOS Wiki](https://wiki.cachyos.org/) is the best place to learn more about CachyOS and should always be your first stop for more information and should be followed when installing and setting up CachyOS. The [ArchWiki](https://wiki.archlinux.org/title/Main_page) is also a great second resource even for CachyOS as they share the same base.
+The [CachyOS Wiki](https://wiki.cachyos.org/) is the best place to learn more about CachyOS and should always be your first stop for more information and should be followed when installing and setting up CachyOS. The [ArchWiki](https://wiki.archlinux.org/title/Main_page) is also a great second resource even for CachyOS as they share the same base, and can often have more information available.
 
 ### PikaOS
 
-PikaOS is still a fairly new distro without a well known proven track record, but has a lot of potential. Very beginner friendly like Bazzite, but features similar performance and tweaks like CachyOS on a stable Debian base, this is a very good distro. This is a good choice if you are familiar with Debian and prefer having a very stable base. Note that because it is based on Debian, certain packages related to your desktop environment will be slightly more out of date compared to the other distros.
+PikaOS is still a fairly new distro without a long time track record, but has a lot of potential. Very beginner friendly like Bazzite, but features similar performance and tweaks like CachyOS on a stable Debian base, this is a very good distro for an enthusiast user. This is a good choice if you are familiar with Debian and prefer having a very stable base. Note that because it is based on Debian, certain packages related to your desktop environment will be slightly more out of date compared to the other distros. Also, PikaOS tends to update at a much slower rate than the other distros, often taking 4-6 months between new release versions.
 
 ## LACT
 
 [LACT](https://github.com/ilya-zlobintsev/LACT), or the "Linux GPU Control Application", does just what it's name suggests. For AMD GPU users, it's very important to properly set the correct power profile when running WiVRn. Without this being set to the "VR" power profile while playing, AMD GPUs try to save some power in between frames, but this can result in motion sickness due to frame jitter, especially when in GPU limited scenarios like VR gaming. The program also works for other GPU brands, but the VR power profile issue only applies to AMD cards.
 
+With LACT, you need to ensure your GPU's clock speeds are detected correctly. It often fails to detect my Core clocks incorrectly on first run, showing my "Maximum GPU Clock (MHz)" + or - 30Mhz or so of it's actual rated value of 2565MHz. Once it is manually changed, it will update again, so verify this and all your other clock data is valid to prevent lower performance or instability issues.
+
+LACT has a profile system that can automatically change your Power Profile mode, clock speeds, and fan speeds based on which applications are currently running, and it will do this with the lactd service in the background even if the GUI is not running. Having a VR profile or compute profile will allow you to set the correct Power Profiles for those workloads and adjust accordingly.
+
 ### LACT Installation
 
 #### Bazzite
-In Bazzite, LACT's flatpak can easily be installed via the [Bazaar App Store](https://docs.bazzite.gg/Installing_and_Managing_Software/Flatpak/). Once installed, open the application and follow the graphical prompts to setup the LACT GPU control daemon. Enter your password if prompted.
+In Bazzite, LACT's flatpak can easily be installed via the [Bazaar App Store](https://docs.bazzite.gg/Installing_and_Managing_Software/Flatpak/). Once installed, open the application and follow the graphical prompts to setup the LACT GPU control daemon. Enter your password if prompted and follow all instructions.
 
 #### CachyOS
 In CachyOS, install LACT using:
@@ -139,11 +144,13 @@ In PikaOS, install LACT using the [Discover App Store](https://apps.kde.org/disc
 
 ### LACT Setup
 
-With LACT installed on your system, open it and the main screen should have a notice at the top to enable the overclocking features. This MUST be done to enable you to control power profiles, and also unlocks custom fan curves and overclocking if needed. A reboot will be required afterwards to enable these features.
+With LACT installed on your system, open it and the main screen should have a notice at the top to enable the overclocking features. This MUST be done to enable you to control power profiles, and also unlocks custom fan curves and overclocking if needed. A reboot will be required afterwards to enable these features. You must enable this "Overclocking" mode even if you have no desire to overclock or undervolt your GPU, as unlocking the full Power Usage Limit of your GPU and custom fan control profiles are locked behind it.
 
 As each GPU is different, the actual setup of fan curves and overclocking will not be covered in this guide. It is important that LACT be properly setup for your GPU, especially your boost clocks and power level must be set correctly. If unsure, try to look up your exact GPU model on the internet. Techpowerup has a great library of GPU spec pages that can be easily found by pasting your full "Card Model" and "VBIOS Version" from the "Information" tab in LACT into your web search.
 
-Once LACT has been fully setup and overclocking has been enabled, open up the main GUI. You will click on your GPU in the top left of the application to view profiles, which are not enabled by default.
+Newer versions of LACT will automatically try to detect your Distro and setup automatically, and in my experience this works well. Click this button and enter a password if asked, and follow all additional prompts and instructions to enable overdrive.
+
+Once LACT has been fully setup and overclocking has been enabled, open up the main GUI. You will click on your GPU in the top left of the application to view profiles, which are not enabled by default. If you have multiple GPUs, you can change them using the GPU selection box in the top left.
 
 ![LACT](/assets/images/lact_power_profile.webp)
 
@@ -153,7 +160,7 @@ Now, using the top left menu, click the hamburger menu next to the new "WiVRn VR
 
 ![LACT Profile Rules](/assets/images/lact_profile_rules.webp)
 
-Following the above image, you want to make this profile automatically load whenever the "wivrn-server" process is running. This will make the VR power profile load automatically when the server is running on your desktop, then change back to the Default profile after it is closed.
+Following the above image, you want to make this profile automatically load whenever the "wivrn-server" process is running. This will make the VR power profile load automatically when the server is running on your desktop, then change back to the Default profile after it is closed. I recommend having any application or service you want to use as a trigger running so you can properly detect it when adding it to your profile.
 
 To enable automatic profile switching, you must select the top left menu in LACT again and make sure "Switch automatically" is checked. At this point if everything was done correctly, you should be able to leave LACT open on your desktop and open up the WiVRn dashboard and the profile in the top left of LACT will change from "Default" to "WiVRn VR". You can also check to see that the VR profile is loaded correctly under the "Performance" section of the "OC" tab. Simply closing out of the WiVRn dashboard should make it switch back to the Default profile.
 
@@ -161,7 +168,7 @@ The LACT GUI does not need to be open for profile switching to work, and can be 
 
 ## WiVRn
 
-[WiVRn](https://github.com/WiVRn/WiVRn) wirelessly connects a standalone VR headset to a Linux computer. You can then play PCVR games on the headset while processing is done on the computer. Mainly for Meta Quest headsets, but also supports a number of Pico headsets.
+[WiVRn](https://github.com/WiVRn/WiVRn) wirelessly connects a standalone VR headset to a Linux computer. You can then play PCVR games on the headset while main processing is done on the computer. Mainly for Meta Quest headsets, but also supports a number of Pico headsets.
 
 ### WiVRn Installation
 
@@ -228,11 +235,13 @@ NOTE: Above headsets do not support AV1 decoding, even if your GPU supports it, 
 
 NOTE: On newer kernel and mesa versions (Like in Bazzite), using Vulkan instead of Vaapi is prefered but can have issues with older hardware. Try vulkan and if you still struggle with latency, using vaapi as an alternative fallback option. I myself have no issues running vulkan on my 7800 XT with at least the 6.17 kernel and Mesa 25.3.4.
 
-If your GPU hardware doesn't support AV1, use H265 as fallback instead.
+AV1 will be the highest quality option if you have a 9000 series or newer AMD GPU, but I find that it struggles at higher resolutions on 7000 series or older, so use H265 on those GPUs. **NOTE: This may change with driver improvements, so your own testing may be needed to find the best balance of quality/performance.**
 
-You can try switching your codec to h.264 to get a reduction in latency, but note that you may see more banding in gradients if you do so. (This is true even on 8 bit displays!)
+If your GPU hardware doesn't support AV1 at all, use H265 as fallback instead.
 
-I personally set mine as seen in the image above for my AMD GPU to ensure I am always using vulkan as it is more supported going forward and now also supports realtime bitrate switching in WiVRn.
+You can try switching your codec to H.264 to get a reduction in latency, but note that you may see more banding in gradients if you do so. (This is true even on 8 bit displays!) H.264 also usually requires a higher bitrate than H265 or AV1 to achieve the same picture quality, especially in dark scenes or fast paced games.
+
+I personally set mine as seen in the image above for my AMD GPU to ensure I am always using vulkan as it is more supported going forward and now also supports real time bitrate switching in WiVRn, allow me to change the bitrate live as I play a game.
 
 - Autostart application:
 
@@ -240,7 +249,7 @@ This allows you to launch a specific game or application once WiVRn has successf
 
 - OpenVR compatibility library:
 
-One of the major advantages to using the WiVRn flatpak is that it already comes bundled with xrizer, which will allow you to play certain games that normally require OpenVR/Steam VR such as Half Life:Alyx in OpenXR instead, completely removing the need for Steam VR to even be installed.
+One of the major advantages to using the WiVRn flatpak is that it already comes bundled with xrizer, which will allow you to play certain games that normally require OpenVR/Steam VR such as Half Life: Alyx in OpenXR instead, completely removing the need for Steam VR to even be installed. I have personally beat the entirely of Half Life: Alyx in Linux with WiVRn + xrizer, and even had WayVR running as an overlay and had no game breaking bugs or major issues during the entire playthrough.
 
 ---
 
@@ -294,13 +303,13 @@ Select the settings page on the left side of the panel in front of you.
 
 - Stream resolution:
 
-  - Newer versions of WiVRn set the stream resolution at 50% by default, which adjusts the foveated encoding that WiVRn uses. The higher the value, the larger the foveated area around the outside of the image becomes, filling up more of the screen. Turning this slider down will require more GPU power depending on how intensive of a game you play is. Adjust accordingly and try to strike a balance between image quality and performance.
+  - Newer versions of WiVRn set the stream resolution at 50% by default, which adjusts the foveated encoding that WiVRn uses. The higher the value, the larger the foveated area around the outside of the image becomes, filling up more of the screen. Turning this slider down will require more GPU power depending on how intensive of a game you play is. Adjust accordingly and try to strike a balance between image quality and performance. I find the default 50% value work very well on my Quest 2 headset.
 
 - Codec:
-  - H.265 is preferred over H.264 as it will result in a smaller encoded video size while streaming, and also allow for checking "10-bit" to show less color banding it the image, as well as more striking dark scenes. H256 generally adds about 3ms of extra latency during the encoding process, but this trade off is worth it for the higher quality image and less banding.
+  - Use AV1 on AMD 9000 series or newer, and H.265 is preferred over H.264 as it will result in a smaller encoded video size while streaming, and also allow for checking "10-bit" to show less color banding it the image, as well as more striking dark scenes. H256 generally adds about 3ms of extra latency during the encoding process, but this trade off is worth it for the higher quality image and less banding at a lower bitrate.
 
 - Bitrate:
-  - WiVRn should be able to support the full 200Mbit/s bitrate on good WiFi networks with little interference. The quality difference is only noticeable at sub 80Mbit/s bitrates. *NOTE* When using VAAPI hardware acceleration, you have to fully restart the headset app and server on PC to change it.
+  - WiVRn should be able to support the full 200Mbit/s bitrate on good WiFi networks with little interference. The quality difference is only noticeable at sub 80Mbit/s bitrates. *NOTE* When using VAAPI hardware acceleration, you have to fully restart the headset app and server on PC to change it, as VAAPI doesn't support changing bitrate without a full restart of the WiVRn server on your desktop.
 
 - High power mode
   - Useful for getting high quality recordings in headset, but will drain your battery faster and also force the GPU to a higher clock rate. This can cause massive stuttering and headset issues if it overheats, so I recommend leaving this unchecked, especially if you record on your desktop instead.
@@ -308,6 +317,7 @@ Select the settings page on the left side of the panel in front of you.
 - Enable microphone:
 
   - Enable this to allow the in-headset microphone to pass through to your computer. You will get a prompt from the headset asking to enable microphone permissions, and you must accept them for microphone passthrough to work.
+
 - Show performance metrics:
 
 ### WiVRn App Post Processing Tab
@@ -347,29 +357,19 @@ Click on “Proton-GE” listed at the top of the page in ProtonPlus.
 
 ![ProtonPlus ProtonGE](/assets/images/ProtonPlus_ProtonGE.webp)
 
-Click on the download icon next to "Proton-GE Latest" and wait for it to download. If you run into issues with games on this latest version, try the next one down on the list (GE-Proton10-10 in the example image).
+Click on the download icon next to latest version of ProtonGE, but don't use "ProtonGE-Latest" and wait for it to download. **NOTE: Using ProtonGE-Latest isn't advised as it will automatically update when a new version releases, and can often cause issues with your older games that previously ran well. Update when you want/need new features, and control the versions yourself to prevent issues that come with these automatic updates. If you have issues with a game, check ProtonDB and see what others are using with similar hardware to yours and maybe try using a more supported and sometimes older version of ProtonGE.
 
 There are tons of other Proton versions you can try, but I personally have never needed to use any others. Some work better on much older GPUs or help for running much older games.
 
 ### CachyOS
 
-There are two custom proton versions that come bundled with CachyOS.
+- **Proton CachyOS** - based on Proton bleeding-edge branch, this is a version of Proton is installed by default in CachyOS and supports both [Easy Anti-Cheat (EAC)](https://www.easy.ac/) and [BattlEye (BE)](https://www.battleye.com/) anti-cheats in games. If a game you play uses either of these, make sure to use the proton-cachyos version and manually enable it for each game that needs it. Without this proton version you risk being kicked from servers or having connection issues.
 
-- **proton-cachyos** - based on Proton bleeding-edge, this is a custom Proton version that uses native libraries and has a ton of tweaks. This is best installed along with Steam and other dependencies using the [CachyOS Wiki](https://wiki.cachyos.org/configuration/gaming/#essential-packages) instructions.
-
-- **proton-cachyos-slr** - a version of Proton that supports both [Easy Anti-Cheat (EAC)](https://www.easy.ac/) and [BattlEye (BE)](https://www.battleye.com/) anti-cheats in games. If a game you play uses either of these, make sure to install the package "proton-cachyos-slr" and manually enable it for each game that needs it. Without this proton version you risk being kicked from servers or having connection issues.
-
-You can easily install both of these versions of Proton in CachyOS with the following command:
-
-`paru -S cachyos-gaming-meta proton-cachyos-slr`
-
-This has the advantage of integrating updates to these Proton versions with your regular system updates, simplifying upgrades.
-
-In addition to these CachyOS specific versions, you can also easily install ProtonPlus and also use Proton-GE if that version gives you better supports for certain games.
+In addition to proton-cachyos, you can also easily install ProtonPlus and also use Proton-GE if that version gives you better support or features for certain games.
 
 ## Enabling ntsync
 
-Ntsync is now enabled by default when using Proton-GE, and no user input is needed to get it work.
+Ntsync is now enabled by default when using Proton-GE, Proton CachyOS, and Valve's Proton 11 or newer, and no user input is needed to get it work anymore, it will be used by default.
 
 ### Verify ntsync is functioning correctly
 
@@ -403,13 +403,13 @@ If selecting the audio device doesn't seem to "save" your prefered outputs, you 
 
 At this point, it is a good idea to just launch a VR game and see how the it runs before playing with mods or tweaks. You can either run the game from Steam on you monitor or use the following .
 
-If the game starts on your desktop but doesn’t connect to the headset, try fully re-booting WiVRn and Steam. Sometimes it also takes a full reboot of the headset and computer to make things work.
+If the game starts on your desktop but doesn’t connect to the headset, try fully rebooting WiVRn and Steam. Sometimes it also takes a full reboot of the headset and computer to make things work.
 
 You may tweak the WiVRn dashboard settings as discussed previously. Try increasing or lowering the bitrate as needed.
 
-If you still have quality or stream corruption issues, especially if having to drop the bitrate down to 50 MBit/s or lower, then suspect a faulty hardware or software install, or network quality issues.
+If you still have quality or stream corruption issues, especially if having to drop the bitrate down to 50 MBit/s or lower, then suspect a faulty hardware or software install, but usually these are caused by wireless network latency or quality issues.
 
-Once your game is running, get to a good stop where you can pause the game, or stay at the main menu. All that matters at this point is the game is putting some GPU load on your system, and that your actually running a VR application.
+Once your game is running, get to a good stop where you can pause the game, or stay at the main menu. All that matters at this point is the game is putting some GPU load on your system, and that you're actually running a VR application.
 
 ## Getting to know WiVRn
 
